@@ -10,6 +10,9 @@
 *.userosscache
 *.sln.docstates
 
+# vscode
+.vscode*
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -348,3 +351,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Bazel directories
+bazel*
