@@ -1,0 +1,49 @@
+{
+  "_from": "@bazel/bazelisk",
+  "_id": "@bazel/bazelisk@1.11.0",
+  "_inBundle": false,
+  "_integrity": "sha512-lxiQzVqSGDG0PIDQGJdVDjp7T+50p5NnM4EnRJa76mkZp6u5ul19GJNKhPKi81TZQALZEZDxAgxVqQKkWTUOxA==",
+  "_location": "/@bazel/bazelisk",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@bazel/bazelisk",
+    "name": "@bazel/bazelisk",
+    "escapedName": "@bazel%2fbazelisk",
+    "scope": "@bazel",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/@bazel/bazelisk/-/bazelisk-1.11.0.tgz",
+  "_shasum": "f98d8438b4c14e3328126618b96775d271caa5f8",
+  "_spec": "@bazel/bazelisk",
+  "_where": "/home/michel",
+  "bin": {
+    "bazelisk": "bazelisk.js",
+    "bazel": "bazelisk.js"
+  },
+  "bugs": {
+    "url": "https://github.com/bazelbuild/bazelisk/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A user-friendly launcher for Bazel",
+  "homepage": "https://github.com/bazelbuild/bazelisk#readme",
+  "keywords": [
+    "bazel"
+  ],
+  "license": "Apache-2.0",
+  "main": "bazelisk.js",
+  "name": "@bazel/bazelisk",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bazelbuild/bazelisk.git"
+  },
+  "types": "bazelisk.d.ts",
+  "version": "1.11.0"
+}

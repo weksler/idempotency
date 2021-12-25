@@ -353,4 +353,4 @@ MigrationBackup/
 .ionide/
 
 # Bazel directories
-bazel*
+bazel-*
