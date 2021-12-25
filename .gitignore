@@ -352,5 +352,5 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-# Bazel directories, but allow bazelisk
+# Bazel directories, but allow bazelisk...
 bazel-*
