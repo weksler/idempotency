@@ -1,7 +1,21 @@
 package com.bablooka.idempotency;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
+import org.junit.Test;
+
 public class IdempotencyTest {
-    public static void Main(String[] args) {
-        System.out.println("Hello world!!!!!");
+
+    Idempotency idempotency;
+
+    @Before
+    public void setUp() throws Exception {
+        idempotency = new Idempotency();
+    }
+
+    @Test
+    public void testGetName() {
+        assertEquals("Idempotency!", idempotency.getName());
     }
 }
