@@ -19,11 +19,5 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
         
-    - name: Find out which directory we are in
-      run: pwd
-
-    - name: what files are here
-      run: ls -la
-
     - name: Test with Bazel
-      run: ./bazel test --verbose_failures //src/test/java/com/bablooka/idempotency:idempotenc
+      run: ./bazel test --verbose_failures //src/test/java/com/bablooka/idempotency:idempotency
