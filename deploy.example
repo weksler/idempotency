@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+DEPLOY_MAVEN_PASSWORD=<put you password here> DEPLOY_MAVEN_USERNAME=<put your usermname here> bazel run //:deploy-maven -- release --gpg
