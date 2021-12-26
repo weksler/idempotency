@@ -6,7 +6,7 @@ java_library(
     srcs = [
         "//src/main/java/com/bablooka/idempotency:sources",
     ],
-    tags = ["maven_coordinates=com.bablooka:gidempotency-core_0.1:{pom_version}", "manual"],
+    tags = ["maven_coordinates=com.bablooka:idempotency-core:{pom_version}", "manual"],
     visibility = ["//:__subpackages__"],
 )
 
