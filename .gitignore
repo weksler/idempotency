@@ -354,3 +354,6 @@ MigrationBackup/
 
 # Bazel directories, but allow bazelisk...
 bazel-*
+
+# Deploy script
+deploy

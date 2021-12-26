@@ -5,3 +5,9 @@ java_library(
     srcs = glob(["*.java"]),
     visibility = ["//visibility:public"],
 )
+
+filegroup(
+   name = "sources",
+   srcs = glob(["*.java"]),
+   visibility = ["//:__subpackages__"],
+)
