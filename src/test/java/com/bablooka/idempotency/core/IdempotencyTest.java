@@ -2,7 +2,6 @@ package com.bablooka.idempotency.core;
 
 import static org.junit.Assert.assertEquals;
 
-import com.bablooka.idempotency.core.Idempotency;
 import org.junit.Before;
 import org.junit.Test;
 
