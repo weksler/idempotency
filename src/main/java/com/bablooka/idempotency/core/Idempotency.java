@@ -1,4 +1,4 @@
-package com.bablooka.idempotency;
+package com.bablooka.idempotency.core;
 
 class Idempotency {
     public String getName() {
