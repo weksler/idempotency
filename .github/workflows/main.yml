@@ -20,4 +20,4 @@ jobs:
         distribution: 'adopt'
 
     - name: Test with Bazel
-      run: ./bazel test --verbose_failures //src/test/java/com/bablooka/idempotency:idempotency
+      run: ./bazel test --verbose_failures //src/test/java/com/bablooka/idempotency/core:core
