@@ -18,6 +18,6 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-        
+
     - name: Test with Bazel
       run: ./bazel test --verbose_failures //src/test/java/com/bablooka/idempotency:idempotency

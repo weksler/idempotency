@@ -20,5 +20,3 @@ git_repository(
     remote = "https://github.com/bazelbuild/bazel-skylib",
     commit = "b2ed61686ebca2a44d44857fef5b3e1d31cc2483"
 )
-
-
