@@ -357,3 +357,6 @@ bazel-*
 
 # Deploy script
 deploy
+
+# Intellij Bazel plugin
+.ijwb*
