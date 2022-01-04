@@ -1,0 +1,9 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
+
+proto_library(
+    name = "idempotency_record_proto",
+    srcs = ["idempotency_record.proto"],
+    deps = [
+        "@com_google_protobuf//:timestamp_proto",
+    ]
+)

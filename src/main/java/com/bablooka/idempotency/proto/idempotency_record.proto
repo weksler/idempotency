@@ -1,0 +1,18 @@
+// Idempotency record
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+message IdempotencyRecord {
+  // An idempotency key
+  string idempotencyKey = 1;
+
+  // Context for the key, e.g. the fingerprint of the RPC call this key is protecting, or the rpc url itself
+  string context = 2;
+
+  // Timestamp of when the lease on this record expires
+  google.protobuf.Timestamp leaseExpiresAt = 3;
+
+  // The response to the RPC call, to be returned in case of a retry
+  bytes rpcResponse = 4;
+}
