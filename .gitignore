@@ -356,7 +356,7 @@ MigrationBackup/
 bazel-*
 
 # Deploy script
-deploy
+deploy/deploy
 
 # Intellij Bazel plugin
 .ijwb*

@@ -19,7 +19,7 @@ assemble_maven(
     project_description = "Idempotecy - Java library for idempotency",
     project_url = "https://github.com/weksler/idempotecy",
     scm_url = "https://github.com/weksler/idempotency.git",
-    version_file = "//:VERSION",
+    version_file = "//deploy:VERSION",
     developers = {"1": ["name=Michael Weksler", "email=m...@b...m", "organization=Bablooka"]},
     license = "mit"
 )
@@ -27,5 +27,5 @@ assemble_maven(
 deploy_maven(
     name = "deploy-maven",
     target = ":assemble-maven",
-    deployment_properties = "//:deployment.properties"
+    deployment_properties = "//deploy:deployment.properties"
 )

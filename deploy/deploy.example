@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+DEPLOY_MAVEN_PASSWORD=<put you password here> DEPLOY_MAVEN_USERNAME=<put your usermname here> ./bazel run //:deploy-maven -- release --gpg \
+&& echo "Staged successfully, go to https://s01.oss.sonatype.org/#stagingRepositories and close the repository to release."

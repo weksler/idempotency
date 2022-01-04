@@ -1,6 +1,7 @@
+workspace(name = "idempotency")
+
 load("@bazel_tools//tools/build_defs/repo:jvm.bzl", "jvm_maven_import_external")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
-
 
 jvm_maven_import_external(
     name = "junit4",
