@@ -5,5 +5,11 @@ proto_library(
     srcs = ["idempotency_record.proto"],
     deps = [
         "@com_google_protobuf//:timestamp_proto",
-    ]
+    ],
+)
+
+java_proto_library(
+    name = "idempotency_record_java_proto",
+    deps = [":idempotency_record_proto"],
+    visibility = ["//visibility:public"],
 )

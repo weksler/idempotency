@@ -1,6 +1,10 @@
 // Idempotency record
 syntax = "proto3";
 
+package com.bablooka.idempotency.proto;
+
+option java_multiple_files = true;
+
 import "google/protobuf/timestamp.proto";
 
 message IdempotencyRecord {
