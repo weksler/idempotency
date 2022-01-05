@@ -8,8 +8,8 @@ java_plugin(
 )
 
 java_library(
-  name = "lombok",
-  exports = ["@lombok_jar//jar"],
-  exported_plugins = [":lombok_plugin"],
-  visibility = ["//visibility:public"]
+    name = "lombok",
+    exports = ["@lombok_jar//jar"],
+    exported_plugins = [":lombok_plugin"],
+    visibility = ["//visibility:public"]
 )

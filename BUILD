@@ -4,7 +4,10 @@ load("@graknlabs_bazel_distribution//maven/templates:rules.bzl", "deploy_maven",
 java_library(
     name = "idempotency-core",
     srcs = ["//src/main/java/com/bablooka/idempotency/core:sources"],
-    deps = ["//src/main/java/com/bablooka/idempotency/proto:idempotency_record_java_proto"],
+    deps = [
+        "@lombok//:lombok",
+        "//src/main/java/com/bablooka/idempotency/proto:idempotency_record_java_proto"
+    ],
     tags = ["maven_coordinates=com.bablooka:idempotency-core:{pom_version}", "manual"],
     visibility = ["//:__subpackages__"],
 )

@@ -4,6 +4,7 @@ java_library(
     name = "core",
     srcs = [":sources"],
     deps = [
+        "@log4j",
         "@lombok//:lombok",
         "//src/main/java/com/bablooka/idempotency/proto:idempotency_record_java_proto"
     ],

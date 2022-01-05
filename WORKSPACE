@@ -1,9 +1,14 @@
 workspace(name = "idempotency")
 
-load("@bazel_tools//tools/build_defs/repo:jvm.bzl", "jvm_maven_import_external")
-load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+# rules_java defines rules for generating Java code from Protocol Buffers.
+http_archive(
+    name = "rules_java",
+    url = "https://github.com/bazelbuild/rules_java/releases/download/4.0.0/rules_java-4.0.0.tar.gz",
+    sha256 = "34b41ec683e67253043ab1a3d1e8b7c61e4e8edefbcad485381328c934d072fe",
+)
 
+load("@bazel_tools//tools/build_defs/repo:jvm.bzl", "jvm_maven_import_external")
 jvm_maven_import_external(
     name = "junit4",
     artifact = "junit:junit:4.13.2",
@@ -11,6 +16,19 @@ jvm_maven_import_external(
     licenses = ["notice"],
 )
 
+RULES_JVM_EXTERNAL_TAG = "4.2"
+RULES_JVM_EXTERNAL_SHA = "cd1a77b7b02e8e008439ca76fd34f5b07aecb8c752961f9640dea15e9e5ba1ca"
+
+http_archive(
+    name = "rules_jvm_external",
+    strip_prefix = "rules_jvm_external-%s" % RULES_JVM_EXTERNAL_TAG,
+    sha256 = RULES_JVM_EXTERNAL_SHA,
+    url = "https://github.com/bazelbuild/rules_jvm_external/archive/%s.zip" % RULES_JVM_EXTERNAL_TAG,
+)
+
+load("@rules_jvm_external//:defs.bzl", "maven_install")
+
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 git_repository(
     name = "graknlabs_bazel_distribution",
     remote = "https://github.com/graknlabs/bazel-distribution",
@@ -23,12 +41,6 @@ git_repository(
     commit = "b2ed61686ebca2a44d44857fef5b3e1d31cc2483"
 )
 
-# rules_java defines rules for generating Java code from Protocol Buffers.
-http_archive(
-    name = "rules_java",
-    url = "https://github.com/bazelbuild/rules_java/releases/download/4.0.0/rules_java-4.0.0.tar.gz",
-    sha256 = "34b41ec683e67253043ab1a3d1e8b7c61e4e8edefbcad485381328c934d072fe",
-)
 load("@rules_java//java:repositories.bzl", "rules_java_dependencies", "rules_java_toolchains")
 rules_java_dependencies()
 rules_java_toolchains()
@@ -58,4 +70,11 @@ new_local_repository(
   name = "lombok",
   path = "lombok/",
   build_file = "lombok/BUILD.bazel"
+)
+
+jvm_maven_import_external(
+    name = "log4j",
+    artifact = "org.apache.logging.log4j:log4j-api:jar:2.17.1",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
 )
