@@ -3,7 +3,10 @@ load("@rules_java//java:defs.bzl", "java_library")
 java_library(
     name = "core",
     srcs = [":sources"],
-    deps = ["//src/main/java/com/bablooka/idempotency/proto:idempotency_record_java_proto"],
+    deps = [
+        "@lombok//:lombok",
+        "//src/main/java/com/bablooka/idempotency/proto:idempotency_record_java_proto"
+    ],
     visibility = ["//visibility:public"],
 )
 

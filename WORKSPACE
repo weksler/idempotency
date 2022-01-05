@@ -46,3 +46,16 @@ http_archive(
 load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
 rules_proto_dependencies()
 rules_proto_toolchains()
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_jar")
+http_jar(
+  name = "lombok_jar",
+  url = "https://projectlombok.org/downloads/lombok-1.18.16.jar",
+  sha256 = "7206cbbfd6efd5e85bceff29545633645650be58d58910a23b0d4835fbd15ed7"
+)
+
+new_local_repository(
+  name = "lombok",
+  path = "lombok/",
+  build_file = "lombok/BUILD.bazel"
+)

@@ -11,12 +11,16 @@ message IdempotencyRecord {
   // An idempotency key
   string idempotencyKey = 1;
 
+  // The version of this record. Can be used for optimistic locking. For every update to this record, the
+  // version must be incremented by at least 1.
+  int64 version = 2;
+
   // Context for the key, e.g. the fingerprint of the RPC call this key is protecting, or the rpc url itself
-  string context = 2;
+  string context = 3;
 
   // Timestamp of when the lease on this record expires
-  google.protobuf.Timestamp leaseExpiresAt = 3;
+  google.protobuf.Timestamp leaseExpiresAt = 4;
 
   // The response to the RPC call, to be returned in case of a retry
-  bytes rpcResponse = 4;
+  bytes rpcResponse = 5;
 }
