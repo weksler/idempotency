@@ -16,8 +16,11 @@ jobs:
     - name: set up JDK 11
       uses: actions/setup-java@v2
       with:
-        java-version: '11'
-        distribution: 'adopt'
+        java-version: '17'
+        distribution: 'zulu'
+        
+    - name: Find out some info about where java is installed
+      run: java --version && which java && pwd
 
     - name: Test with Bazel
       run: ./bazel test --verbose_failures //...
