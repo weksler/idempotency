@@ -13,14 +13,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: set up JDK 11
+    - name: set up Zulu JDK 17
       uses: actions/setup-java@v2
       with:
         java-version: '17'
         distribution: 'zulu'
         
-    - name: Find out some info about where java is installed
-      run: java --version && which java && pwd && echo $JAVA_HOME
+    - name: Prepare .bazelrc file
+      run:  cat bazelrc.tmpl | sed s+xxxxxx+"$JAVA_HOME"+ 
 
     - name: Test with Bazel
       run: ./bazel test --verbose_failures //...
