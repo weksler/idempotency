@@ -18,9 +18,9 @@ jobs:
       with:
         java-version: '17'
         distribution: 'zulu'
-        
+
     - name: Prepare .bazelrc file
-      run:  cat bazelrc.tmpl | sed s+xxxxxx+"$JAVA_HOME"+ 
+      run:  cat bazelrc.tmpl | sed s+xxxxxx+"$JAVA_HOME"+ > .bazelrc
 
     - name: Test with Bazel
       run: ./bazel test --verbose_failures //...
