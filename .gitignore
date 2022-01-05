@@ -360,3 +360,6 @@ deploy/deploy
 
 # Intellij Bazel plugin
 .ijwb*
+
+# Bazelrc is generated
+.bazelrc

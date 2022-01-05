@@ -1,10 +1,14 @@
 load("@rules_java//java:defs.bzl", "java_library")
 load("@graknlabs_bazel_distribution//maven/templates:rules.bzl", "deploy_maven", "assemble_maven")
+load("@dagger//:workspace_defs.bzl", "dagger_rules")
+dagger_rules()
 
 java_library(
     name = "idempotency-core",
     srcs = ["//src/main/java/com/bablooka/idempotency/core:sources"],
     deps = [
+        ":dagger",
+        "@log4j",
         "@lombok//:lombok",
         "//src/main/java/com/bablooka/idempotency/proto:idempotency_record_java_proto"
     ],

@@ -62,8 +62,7 @@ rules_proto_toolchains()
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_jar")
 http_jar(
   name = "lombok_jar",
-  url = "https://projectlombok.org/downloads/lombok-1.18.16.jar",
-  sha256 = "7206cbbfd6efd5e85bceff29545633645650be58d58910a23b0d4835fbd15ed7"
+  url = "https://projectlombok.org/downloads/lombok-1.18.22.jar",
 )
 
 new_local_repository(
@@ -77,4 +76,20 @@ jvm_maven_import_external(
     artifact = "org.apache.logging.log4j:log4j-api:jar:2.17.1",
     server_urls = ["https://repo.maven.apache.org/maven2"],
     licenses = ["notice"],
+)
+
+DAGGER_TAG = "2.28.1"
+DAGGER_SHA = "9e69ab2f9a47e0f74e71fe49098bea908c528aa02fa0c5995334447b310d0cdd"
+http_archive(
+    name = "dagger",
+    strip_prefix = "dagger-dagger-%s" % DAGGER_TAG,
+    sha256 = DAGGER_SHA,
+    urls = ["https://github.com/google/dagger/archive/dagger-%s.zip" % DAGGER_TAG],
+)
+
+load("@dagger//:workspace_defs.bzl", "DAGGER_ARTIFACTS", "DAGGER_REPOSITORIES")
+
+maven_install(
+  artifacts = DAGGER_ARTIFACTS,
+  repositories = DAGGER_REPOSITORIES,
 )

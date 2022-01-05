@@ -1,12 +1,17 @@
 package com.bablooka.idempotency.core;
 
-// import lombok.extern.log4j.Log4j2;
+import javax.inject.Inject;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
-// @Log4j2
+@Log4j2
+@AllArgsConstructor(
+    access = AccessLevel.PRIVATE,
+    onConstructor_ = {@Inject})
 public class IdempotencyHandler {
 
-  // @Inject
-  private IdempotentRpcContextFactory idempotentRpcContextFactory;
+  private final IdempotentRpcContextFactory idempotentRpcContextFactory;
 
   public void handleRpc(
       IdempotencyStoreConnection idempotencyStoreConnection,
