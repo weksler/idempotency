@@ -1,0 +1,6 @@
+#!/bin/bash
+cd /private/var/tmp/_bazel_michel/e957dc8fc70b918427afd543d8832e1f/execroot/idempotency/bazel-out/darwin_arm64-fastbuild/bin/src/main/java/com/bablooka/idempotency/application/application.runfiles/idempotency && \
+  exec env \
+    BUILD_WORKING_DIRECTORY=/Users/michel/code/idempotency \
+    BUILD_WORKSPACE_DIRECTORY=/Users/michel/code/idempotency \
+  /private/var/tmp/_bazel_michel/e957dc8fc70b918427afd543d8832e1f/execroot/idempotency/bazel-out/darwin_arm64-fastbuild/bin/src/main/java/com/bablooka/idempotency/application/application "$@"

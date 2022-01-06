@@ -1,0 +1,26 @@
+load("@rules_java//java:defs.bzl", "java_library")
+
+load("@dagger//:workspace_defs.bzl", "dagger_rules")
+dagger_rules()
+
+java_binary(
+    name = "application",
+    srcs = glob(["*.java"]),
+    data = [
+        "//resources:log4j.properties",
+    ],
+    deps = [
+        ":dagger",
+        "@log4j-api",
+        "@lombok//:lombok",
+        "//src/main/java/com/bablooka/idempotency/core",
+    ],
+    runtime_deps = [
+        "@log4j-core",
+    ],
+    jvm_flags = [
+        "-Dlog4j.configurationFile=resources/log4j.properties"
+    ],
+    main_class = "com.bablooka.idempotency.application.IdempotencyExample",
+    visibility = ["//visibility:public"],
+)

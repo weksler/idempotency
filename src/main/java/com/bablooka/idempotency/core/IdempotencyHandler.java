@@ -7,16 +7,16 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @AllArgsConstructor(
-    access = AccessLevel.PRIVATE,
+    access = AccessLevel.PUBLIC,
     onConstructor_ = {@Inject})
-public class IdempotencyHandler {
+public class IdempotencyHandler<T extends Object> {
 
-  private final IdempotentRpcContextFactory idempotentRpcContextFactory;
+  private final IdempotentRpcContextFactory<T> idempotentRpcContextFactory;
 
   public void handleRpc(
       IdempotencyStoreConnection idempotencyStoreConnection,
       IdempotencyStore idempotencyStore,
-      IdempotentRpc<?> idempotentRpc) {
+      IdempotentRpc<T> idempotentRpc) {
     // idempotentRpc.prepare();
   }
 }

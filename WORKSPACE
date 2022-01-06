@@ -72,8 +72,17 @@ new_local_repository(
 )
 
 jvm_maven_import_external(
-    name = "log4j",
+    name = "log4j-api",
     artifact = "org.apache.logging.log4j:log4j-api:jar:2.17.1",
+    artifact_sha256 = "b0d8a4c8ab4fb8b1888d0095822703b0e6d4793c419550203da9e69196161de4",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
+jvm_maven_import_external(
+    name = "log4j-core",
+    artifact = "org.apache.logging.log4j:log4j-core:jar:2.17.1",
+    artifact_sha256 = "c967f223487980b9364e94a7c7f9a8a01fd3ee7c19bdbf0b0f9f8cb8511f3d41",
     server_urls = ["https://repo.maven.apache.org/maven2"],
     licenses = ["notice"],
 )
