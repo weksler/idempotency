@@ -1,8 +1,5 @@
 load("@rules_java//java:defs.bzl", "java_library")
 
-load("@dagger//:workspace_defs.bzl", "dagger_rules")
-dagger_rules()
-
 java_binary(
     name = "application",
     srcs = glob(["*.java"]),
@@ -10,7 +7,7 @@ java_binary(
         "//resources:log4j.properties",
     ],
     deps = [
-        ":dagger",
+        "//:dagger",
         "@log4j-api",
         "@lombok//:lombok",
         "//src/main/java/com/bablooka/idempotency/core",
