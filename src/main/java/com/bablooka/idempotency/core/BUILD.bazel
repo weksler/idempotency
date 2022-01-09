@@ -5,6 +5,7 @@ java_library(
     srcs = [":sources"],
     deps = [
         "//:dagger",
+        "@com_google_protobuf//:protobuf_java",
         "@log4j-api",
         "@lombok//:lombok",
         "//src/main/java/com/bablooka/idempotency/proto:idempotency_record_java_proto"

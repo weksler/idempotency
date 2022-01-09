@@ -11,12 +11,23 @@ message IdempotencyRecord {
   // An idempotency key
   string idempotencyKey = 1;
 
-  // The version of this record. Can be used for optimistic locking. For every update to this record, the
-  // version must be incremented by at least 1.
-  int64 version = 2;
+  // Fingerprint of the RPC call, to ensure this is indeed a retry
+  string requestFingerprint = 2;
 
-  // Context for the key, e.g. the fingerprint of the RPC call this key is protecting, or the rpc url itself
-  string context = 3;
+  enum Status {
+    // The request is executing, the caller has not heard back yet.
+    EXECUTING = 0;
+
+    // The request finished executing and has sent back a resonse to the caller, which was recorded in `rpcResponse`.
+    RESPONDED = 1;
+
+    // The request failed, but can be retried by the caller.
+    FAILED_RETRIABLE = 2;
+
+    // The request failed and can not be retried by the caller.
+    FAILED_NON_RETRIABLE = 3;
+  }
+  Status status =3;
 
   // Timestamp of when the lease on this record expires
   google.protobuf.Timestamp leaseExpiresAt = 4;

@@ -5,9 +5,14 @@ import lombok.Data;
 public interface IdempotentRpc<T extends Object> {
   @Data
   class IdempotentRpcContext<T> {
-    T processData;
+    /** The idempotency key for this request */
+    private String idempotencyKey;
 
-    String idempotencyKey;
+    /** Process data to be passed around between the various processing phases of this request */
+    private T processData;
+
+    /** The response to be returned to the caller */
+    private byte[] response;
   }
 
   IdempotentRpcContext prepare(IdempotentRpcContext context);
