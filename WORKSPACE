@@ -16,6 +16,13 @@ jvm_maven_import_external(
     licenses = ["notice"],
 )
 
+jvm_maven_import_external(
+    name = "maven-lombok",
+    artifact = "org.projectlombok:lombok:1.18.20",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
 RULES_JVM_EXTERNAL_TAG = "4.2"
 RULES_JVM_EXTERNAL_SHA = "cd1a77b7b02e8e008439ca76fd34f5b07aecb8c752961f9640dea15e9e5ba1ca"
 
@@ -58,18 +65,6 @@ http_archive(
 load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
 rules_proto_dependencies()
 rules_proto_toolchains()
-
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_jar")
-http_jar(
-  name = "lombok_jar",
-  url = "https://projectlombok.org/downloads/lombok-1.18.22.jar",
-)
-
-new_local_repository(
-  name = "lombok",
-  path = "lombok/",
-  build_file = "lombok/BUILD.bazel"
-)
 
 jvm_maven_import_external(
     name = "log4j-api",

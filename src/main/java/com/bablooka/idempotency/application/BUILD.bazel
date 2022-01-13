@@ -8,8 +8,8 @@ java_binary(
     ],
     deps = [
         "//:dagger",
+        "//:lombok",
         "@log4j-api",
-        "@lombok//:lombok",
         "//src/main/java/com/bablooka/idempotency/core",
     ],
     runtime_deps = [

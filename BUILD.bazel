@@ -3,13 +3,27 @@ load("@graknlabs_bazel_distribution//maven/templates:rules.bzl", "deploy_maven",
 load("@dagger//:workspace_defs.bzl", "dagger_rules")
 dagger_rules()
 
+java_plugin(
+    name = "lombok_plugin",
+    generates_api = True,
+    processor_class = "lombok.launch.AnnotationProcessorHider$AnnotationProcessor",
+    deps = ["@maven-lombok"],
+)
+
+java_library(
+    name = "lombok",
+    exported_plugins = [":lombok_plugin"],
+    visibility = ["//visibility:public"],
+    exports = ["@maven-lombok"],
+)
+
 java_library(
     name = "idempotency-core",
     srcs = ["//src/main/java/com/bablooka/idempotency/core:sources"],
     deps = [
         ":dagger",
+        ":lombok",
         "@log4j-api",
-        "@lombok//:lombok",
         "//src/main/java/com/bablooka/idempotency/proto:idempotency_record_java_proto"
     ],
     tags = ["maven_coordinates=com.bablooka:idempotency-core:{pom_version}", "manual"],
