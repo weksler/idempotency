@@ -3,3 +3,7 @@ build --javabase=@bazel_tools//tools/jdk:absolute_javabase
 build --host_javabase=@bazel_tools//tools/jdk:absolute_javabase
 build --java_toolchain=@bazel_tools//tools/jdk:toolchain_vanilla
 build --host_java_toolchain=@bazel_tools//tools/jdk:toolchain_vanilla
+
+# See https://github.com/bazelbuild/bazel/issues/12837.
+build --nojava_header_compilation
+test --nojava_header_compilation

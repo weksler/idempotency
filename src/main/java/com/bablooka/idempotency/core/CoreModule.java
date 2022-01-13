@@ -8,6 +8,11 @@ import java.time.Duration;
 @Module
 public class CoreModule {
   @Provides
+  static IdempotentRpcContextFactory<String> provideIdempotencyRpcContextFactory() {
+    return (IdempotentRpcContextFactory) () -> new IdempotentRpc.IdempotentRpcContext<String>();
+  }
+
+  @Provides
   Clock provideClock() {
     // This is the clock used by Java's default Instant implementation.
     return Clock.systemUTC();
