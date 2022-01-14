@@ -18,6 +18,38 @@ java_library(
 )
 
 java_library(
+    name = "mockito",
+    runtime_deps = ["@maven-mockito"],
+    exports = ["@maven-mockito"],
+    testonly = 1,
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "mockito-inline",
+    runtime_deps = ["@maven-mockito-inline"],
+    exports = ["@maven-mockito-inline"],
+    testonly = 1,
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "bytebuddy",
+    runtime_deps = ["@maven-bytebuddy"],
+    exports = ["@maven-bytebuddy"],
+    testonly = 1,
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "bytebuddy-agent",
+    runtime_deps = ["@maven-bytebuddy-agent"],
+    exports = ["@maven-bytebuddy-agent"],
+    testonly = 1,
+    visibility = ["//visibility:public"],
+)
+
+java_library(
     name = "idempotency-core",
     srcs = ["//src/main/java/com/bablooka/idempotency/core:sources"],
     deps = [

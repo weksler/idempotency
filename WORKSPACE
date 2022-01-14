@@ -23,6 +23,34 @@ jvm_maven_import_external(
     licenses = ["notice"],
 )
 
+jvm_maven_import_external(
+    name = "maven-mockito",
+    artifact = "org.mockito:mockito-core:4.2.0",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
+jvm_maven_import_external(
+    name = "maven-mockito-inline",
+    artifact = "org.mockito:mockito-inline:4.2.0",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
+jvm_maven_import_external(
+    name = "maven-bytebuddy",
+    artifact = "net.bytebuddy:byte-buddy:1.12.6",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
+jvm_maven_import_external(
+    name = "maven-bytebuddy-agent",
+    artifact = "net.bytebuddy:byte-buddy-agent:1.12.6",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
 RULES_JVM_EXTERNAL_TAG = "4.2"
 RULES_JVM_EXTERNAL_SHA = "cd1a77b7b02e8e008439ca76fd34f5b07aecb8c752961f9640dea15e9e5ba1ca"
 

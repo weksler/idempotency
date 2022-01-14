@@ -7,5 +7,10 @@ java_test(
     deps = [
         "//src/main/java/com/bablooka/idempotency/core:core",
         "@junit4",
+        "//:mockito",
+        "//:mockito-inline",
+        "//:bytebuddy",
+        "//:bytebuddy-agent",
+        "//:dagger",
     ],
 )
