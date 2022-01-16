@@ -1,12 +1,10 @@
 package com.bablooka.idempotency.application;
 
-import com.bablooka.idempotency.core.IdempotencyStore;
-import com.bablooka.idempotency.core.IdempotencyStoreConnection;
-import com.bablooka.idempotency.core.IdempotentRpc;
+import com.bablooka.idempotency.core.*;
 import dagger.Module;
 import dagger.Provides;
 
-@Module
+@Module(includes = CoreModule.class)
 public class IdempotencyExampleModule {
 
   @Provides

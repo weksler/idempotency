@@ -2,6 +2,7 @@ package com.bablooka.idempotency.core;
 
 import static com.bablooka.idempotency.proto.IdempotencyRecord.Status.EXECUTING;
 import static com.bablooka.idempotency.proto.IdempotencyRecord.Status.RESPONDED;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.bablooka.idempotency.proto.IdempotencyRecord;
 import com.google.protobuf.Timestamp;
@@ -36,6 +37,8 @@ public class IdempotencyHandler<T extends Object> {
     // Prepare for the outbound RPC
     IdempotentRpc.IdempotentRpcContext<T> idempotentRpcContext =
         idempotentRpcContextFactory.generateIdempotentRpcContext();
+    String idempotencyKey = idempotentRpcContext.getIdempotencyKey();
+    checkNotNull(idempotencyKey, "Idempotency key can not be null.");
     Instant leaseExpiresAt = util.now().plus(leaseDuration);
     Timestamp timestamp =
         Timestamp.newBuilder()
@@ -44,7 +47,7 @@ public class IdempotencyHandler<T extends Object> {
             .build();
     IdempotencyRecord idempotencyRecord =
         IdempotencyRecord.newBuilder()
-            .setIdempotencyKey(idempotentRpcContext.getIdempotencyKey())
+            .setIdempotencyKey(idempotencyKey)
             .setRequestFingerprint("")
             .setStatus(EXECUTING)
             .setLeaseExpiresAt(timestamp)

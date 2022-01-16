@@ -5,6 +5,7 @@ java_library(
     srcs = [":sources"],
     deps = [
         "//:dagger",
+        "//:guava",
         "//:lombok",
         "@com_google_protobuf//:protobuf_java",
         "@log4j-api",
