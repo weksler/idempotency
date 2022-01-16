@@ -3,6 +3,7 @@ load("@rules_java//java:defs.bzl", "java_test")
 java_test(
     name = "core",
     srcs = glob(["*.java"]),
+    size = "small",
     test_class = "com.bablooka.idempotency.core.CoreTestSuite",
     deps = [
         "//src/main/java/com/bablooka/idempotency/core:core",

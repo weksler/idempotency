@@ -17,7 +17,7 @@ public class Util {
     this.clock = clock;
   }
 
-  Timestamp timestampFromInstant(Instant instant) {
+  Timestamp timestampFromInstant(@NonNull Instant instant) {
     return Timestamp.newBuilder()
         .setSeconds(instant.getEpochSecond())
         .setNanos(instant.getNano())

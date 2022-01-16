@@ -1,9 +1,9 @@
 package com.bablooka.idempotency.core;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
+import com.google.protobuf.Timestamp;
 import dagger.Component;
 import dagger.Module;
 import dagger.Provides;
@@ -43,13 +43,16 @@ public class UtilTest {
   }
 
   @Test
-  public void testAssertOk() {
-    assertTrue(1 == 1);
+  public void testNow() {
+    when(clock.instant()).thenReturn(Instant.ofEpochSecond(TIMESTAMPS_SECONDS));
+    assertEquals(util.now().getEpochSecond(), TIMESTAMPS_SECONDS);
   }
 
   @Test
-  public void testSomethingWithClock() {
-    when(clock.instant()).thenReturn(Instant.ofEpochSecond(TIMESTAMPS_SECONDS));
-    assertEquals(util.now().getEpochSecond(), TIMESTAMPS_SECONDS);
+  public void testTimestampFromInstant() {
+    Instant instant = Instant.parse("2019-10-01T08:25:24.08Z");
+    Timestamp timestamp = util.timestampFromInstant(instant);
+    assertEquals(1_569_918_324, timestamp.getSeconds());
+    assertEquals(80_000_000, timestamp.getNanos());
   }
 }

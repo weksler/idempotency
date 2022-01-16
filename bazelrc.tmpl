@@ -7,3 +7,11 @@ build --host_java_toolchain=@bazel_tools//tools/jdk:toolchain_vanilla
 # See https://github.com/bazelbuild/bazel/issues/12837.
 build --nojava_header_compilation
 test --nojava_header_compilation
+test --cache_test_results=no
+
+# From https://github.com/dbacchet/bazel-coverage-example
+coverage --instrument_test_targets
+coverage --combined_report=lcov
+coverage --coverage_report_generator=@bazel_tools//tools/test/CoverageOutputGenerator/java/com/google/devtools/coverageoutputgenerator:Main
+coverage --instrumentation_filter="^//src/main/java[:/]"
+coverage --test_env=LCOV_MERGER=/usr/bin/true
