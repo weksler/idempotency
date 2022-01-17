@@ -5,6 +5,7 @@ import static com.bablooka.idempotency.proto.IdempotencyRecord.Status.RESPONDED;
 import static com.google.common.base.Preconditions.checkState;
 import static dagger.internal.Preconditions.checkNotNull;
 
+import com.bablooka.idempotency.core.IdempotentRpc.IdempotentRpcContext;
 import com.bablooka.idempotency.proto.IdempotencyRecord;
 import com.google.protobuf.Timestamp;
 import java.sql.Connection;
@@ -34,7 +35,6 @@ public class IdempotencyHandler<T extends Object> {
 
   public byte[] handleRpc(
       Connection connection, IdempotencyStore idempotencyStore, IdempotentRpc<T> idempotentRpc) {
-
     try {
       checkState(
           connection.getAutoCommit() == false,
@@ -46,8 +46,8 @@ public class IdempotencyHandler<T extends Object> {
     }
 
     // Prepare for the outbound RPC
-    IdempotentRpc.IdempotentRpcContext<T> idempotentRpcContext =
-        idempotentRpcContextFactory.generateIdempotentRpcContext();
+    IdempotentRpcContext idempotentRpcContext =
+        idempotentRpcContextFactory.getIdempotencyRpcContext();
     String idempotencyKey = idempotentRpcContext.getIdempotencyKey();
     checkNotNull(idempotencyKey, "Idempotency key can not be null.");
     Instant leaseExpiresAt = util.now().plus(leaseDuration);
@@ -80,6 +80,8 @@ public class IdempotencyHandler<T extends Object> {
     // Process the response from the outbound RPC.
     idempotentRpcContext = idempotentRpc.processResults(idempotentRpcContext);
     idempotencyRecord = idempotencyRecord.toBuilder().setStatus(RESPONDED).build();
+    idempotencyStore.upsertIdempotencyRecord(
+        idempotentRpcContext.getIdempotencyKey(), idempotencyRecord);
 
     return idempotentRpcContext.getResponse();
   }

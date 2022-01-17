@@ -1,19 +1,33 @@
 package com.bablooka.idempotency.core;
 
+import com.bablooka.idempotency.core.IdempotentRpc.IdempotentRpcContext;
 import dagger.Module;
 import dagger.Provides;
 import java.time.Clock;
 import java.time.Duration;
 import java.util.UUID;
+import java.util.function.Supplier;
+import javax.inject.Named;
 
 @Module
 public class CoreModule {
+
+  public static final String IDEMPOTENCY_KEY = "idempotency_key";
+
   @Provides
-  static IdempotentRpcContextFactory<String> provideIdempotencyRpcContextFactory() {
+  IdempotentRpcContextFactory<String> provideIdempotencyRpcContextFactory(
+      @Named(IDEMPOTENCY_KEY) Supplier<String> idempotencyKeySupplier) {
     return () -> {
-      String idempotencyKey = UUID.randomUUID().toString();
-      return new IdempotentRpc.IdempotentRpcContext(idempotencyKey, null, null);
+      String idempotencyKey = idempotencyKeySupplier.get();
+      return IdempotentRpcContext.builder().idempotencyKey(idempotencyKey).build();
     };
+  }
+
+  @Provides
+  @Named(IDEMPOTENCY_KEY)
+  Supplier<String> provideIdempotencyKeySupplier() {
+    // For now, idempotency key is just a UUID
+    return () -> UUID.randomUUID().toString();
   }
 
   @Provides
