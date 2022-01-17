@@ -4,12 +4,16 @@ import dagger.Module;
 import dagger.Provides;
 import java.time.Clock;
 import java.time.Duration;
+import java.util.UUID;
 
 @Module
 public class CoreModule {
   @Provides
   static IdempotentRpcContextFactory<String> provideIdempotencyRpcContextFactory() {
-    return (IdempotentRpcContextFactory) () -> new IdempotentRpc.IdempotentRpcContext<String>();
+    return () -> {
+      String idempotencyKey = UUID.randomUUID().toString();
+      return new IdempotentRpc.IdempotentRpcContext(idempotencyKey, null, null);
+    };
   }
 
   @Provides

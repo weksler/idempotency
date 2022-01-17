@@ -57,6 +57,13 @@ java_library(
 )
 
 java_library(
+    name = "sqlite-jdbc",
+    runtime_deps = ["@maven-sqlite-jdbc"],
+    exports = ["@maven-sqlite-jdbc"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
     name = "idempotency-core",
     srcs = ["//src/main/java/com/bablooka/idempotency/core:sources"],
     deps = [

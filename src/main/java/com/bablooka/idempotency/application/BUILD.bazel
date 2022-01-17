@@ -10,6 +10,7 @@ java_binary(
         "//:dagger",
         "//:lombok",
         "@log4j-api",
+        "//:sqlite-jdbc",
         "//src/main/java/com/bablooka/idempotency/core",
     ],
     runtime_deps = [

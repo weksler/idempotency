@@ -2,10 +2,13 @@ package com.bablooka.idempotency.core;
 
 import static com.bablooka.idempotency.proto.IdempotencyRecord.Status.EXECUTING;
 import static com.bablooka.idempotency.proto.IdempotencyRecord.Status.RESPONDED;
-import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkState;
+import static dagger.internal.Preconditions.checkNotNull;
 
 import com.bablooka.idempotency.proto.IdempotencyRecord;
 import com.google.protobuf.Timestamp;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.Duration;
 import java.time.Instant;
 import javax.inject.Inject;
@@ -30,9 +33,17 @@ public class IdempotencyHandler<T extends Object> {
   }
 
   public byte[] handleRpc(
-      IdempotencyStoreConnection idempotencyStoreConnection,
-      IdempotencyStore idempotencyStore,
-      IdempotentRpc<T> idempotentRpc) {
+      Connection connection, IdempotencyStore idempotencyStore, IdempotentRpc<T> idempotentRpc) {
+
+    try {
+      checkState(
+          connection.getAutoCommit() == false,
+          "Connection %s must have auto commit off.",
+          connection);
+    } catch (SQLException e) {
+      // TODO(weksler): Exception handling :-)
+      log.error("Exception while checking auto commit state", e);
+    }
 
     // Prepare for the outbound RPC
     IdempotentRpc.IdempotentRpcContext<T> idempotentRpcContext =
@@ -55,7 +66,13 @@ public class IdempotencyHandler<T extends Object> {
     idempotentRpcContext = idempotentRpc.prepare(idempotentRpcContext);
     idempotencyStore.upsertIdempotencyRecord(
         idempotentRpcContext.getIdempotencyKey(), idempotencyRecord);
-    idempotencyStoreConnection.commit();
+
+    try {
+      connection.commit();
+    } catch (SQLException e) {
+      // TODO(weksler): Exception handling :-)
+      log.error("Exception while committing", e);
+    }
 
     // Execute the outbound RPC
     idempotentRpcContext = idempotentRpc.execute(idempotentRpcContext);

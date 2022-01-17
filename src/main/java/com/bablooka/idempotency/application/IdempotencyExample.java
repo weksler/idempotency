@@ -1,6 +1,7 @@
 package com.bablooka.idempotency.application;
 
 import com.bablooka.idempotency.core.*;
+import java.sql.Connection;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -10,8 +11,7 @@ public class IdempotencyExample {
     IdempotencyExampleRoot idempotencyExampleRoot = DaggerIdempotencyExampleRoot.create();
 
     IdempotencyHandler<String> idempotencyHandler = idempotencyExampleRoot.idempotencyHandler();
-    IdempotencyStoreConnection idempotencyStoreConnection =
-        idempotencyExampleRoot.idempotencyStoreConnection();
+    Connection idempotencyStoreConnection = idempotencyExampleRoot.idempotencyStoreConnection();
     IdempotencyStore idempotencyStore = idempotencyExampleRoot.idempotencyStore();
     IdempotentRpc<String> idempotencyRpc = idempotencyExampleRoot.idempotencyRpc();
 
