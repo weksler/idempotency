@@ -67,8 +67,9 @@ java_library(
     name = "idempotency-core",
     srcs = ["//src/main/java/com/bablooka/idempotency/core:sources"],
     deps = [
-        ":dagger",
-        ":lombok",
+        "//:dagger",
+        "//:guava",
+        "//:lombok",
         "@log4j-api",
         "//src/main/java/com/bablooka/idempotency/proto:idempotency_record_java_proto"
     ],
