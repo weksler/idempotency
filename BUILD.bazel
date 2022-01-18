@@ -64,6 +64,20 @@ java_library(
 )
 
 java_library(
+    name = "jooq",
+    runtime_deps = ["@maven-jooq"],
+    exports = ["@maven-jooq"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "r2dbc-spi",
+    runtime_deps = ["@maven-r2dbc-spi"],
+    exports = ["@maven-r2dbc-spi"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
     name = "idempotency-core",
     srcs = ["//src/main/java/com/bablooka/idempotency/core:sources"],
     deps = [

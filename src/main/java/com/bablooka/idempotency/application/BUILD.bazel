@@ -9,7 +9,9 @@ java_binary(
     deps = [
         "//:dagger",
         "//:lombok",
+        "//:jooq",
         "@log4j-api",
+        "//:r2dbc-spi",
         "//:sqlite-jdbc",
         "//src/main/java/com/bablooka/idempotency/core",
     ],

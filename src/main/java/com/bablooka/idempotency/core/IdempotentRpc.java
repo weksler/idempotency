@@ -1,6 +1,9 @@
 package com.bablooka.idempotency.core;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 
 public interface IdempotentRpc<T extends Object> {
 

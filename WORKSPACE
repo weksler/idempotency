@@ -65,6 +65,20 @@ jvm_maven_import_external(
     licenses = ["notice"],
 )
 
+jvm_maven_import_external(
+    name = "maven-jooq",
+    artifact = "org.jooq:jooq:3.16.2",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
+jvm_maven_import_external(
+    name = "maven-r2dbc-spi",
+    artifact = "io.r2dbc:r2dbc-spi:0.9.0.RELEASE",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
 RULES_JVM_EXTERNAL_TAG = "4.2"
 RULES_JVM_EXTERNAL_SHA = "cd1a77b7b02e8e008439ca76fd34f5b07aecb8c752961f9640dea15e9e5ba1ca"
 
