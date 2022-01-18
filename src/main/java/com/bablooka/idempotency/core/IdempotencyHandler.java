@@ -43,6 +43,7 @@ public class IdempotencyHandler<T extends Object> {
     } catch (SQLException e) {
       // TODO(weksler): Exception handling :-)
       log.error("Exception while checking auto commit state", e);
+      return new byte[] {};
     }
 
     // Prepare for the outbound RPC
@@ -72,6 +73,7 @@ public class IdempotencyHandler<T extends Object> {
     } catch (SQLException e) {
       // TODO(weksler): Exception handling :-)
       log.error("Exception while committing", e);
+      return new byte[] {};
     }
 
     // Execute the outbound RPC

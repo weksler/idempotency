@@ -17,16 +17,16 @@ public class FakePaymentProcessor implements IdempotentRpc<String> {
 
   @Override
   public IdempotentRpcContext prepare(IdempotentRpcContext context) {
-    return null;
+    return context;
   }
 
   @Override
   public IdempotentRpcContext execute(IdempotentRpcContext context) {
-    return null;
+    return context;
   }
 
   @Override
   public IdempotentRpcContext processResults(IdempotentRpcContext context) {
-    return null;
+    return context;
   }
 }

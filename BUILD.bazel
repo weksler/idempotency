@@ -78,6 +78,13 @@ java_library(
 )
 
 java_library(
+    name = "reactive-streams",
+    runtime_deps = ["@maven-reactive-streams"],
+    exports = ["@maven-reactive-streams"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
     name = "idempotency-core",
     srcs = ["//src/main/java/com/bablooka/idempotency/core:sources"],
     deps = [

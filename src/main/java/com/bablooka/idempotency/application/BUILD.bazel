@@ -11,7 +11,8 @@ java_binary(
         "//:lombok",
         "//:jooq",
         "@log4j-api",
-        "//:r2dbc-spi",
+        "//:r2dbc-spi", # TODO(weksler): Unneeded runtime dependency of jooq - remove it
+        "//:reactive-streams", # TODO(weksler): Unneeded runtime dependency of jooq - remove it
         "//:sqlite-jdbc",
         "//src/main/java/com/bablooka/idempotency/core",
     ],
@@ -19,7 +20,9 @@ java_binary(
         "@log4j-core",
     ],
     jvm_flags = [
-        "-Dlog4j.configurationFile=resources/log4j.properties"
+        "-Dlog4j.configurationFile=resources/log4j.properties",
+        "-Dorg.jooq.no-logo=true", # Suppress Jooq's annoying self promo
+        "-Dorg.jooq.no-tips=true", # Suppress Jooq's annoying tip of the day
     ],
     main_class = "com.bablooka.idempotency.application.IdempotencyExample",
     visibility = ["//visibility:public"],

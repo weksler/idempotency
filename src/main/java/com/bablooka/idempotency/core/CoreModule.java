@@ -1,6 +1,5 @@
 package com.bablooka.idempotency.core;
 
-import com.bablooka.idempotency.core.IdempotentRpc.IdempotentRpcContext;
 import dagger.Module;
 import dagger.Provides;
 import java.time.Clock;
@@ -13,15 +12,6 @@ import javax.inject.Named;
 public class CoreModule {
 
   public static final String IDEMPOTENCY_KEY = "idempotency_key";
-
-  @Provides
-  IdempotentRpcContextFactory<String> provideIdempotencyRpcContextFactory(
-      @Named(IDEMPOTENCY_KEY) Supplier<String> idempotencyKeySupplier) {
-    return () -> {
-      String idempotencyKey = idempotencyKeySupplier.get();
-      return IdempotentRpcContext.builder().idempotencyKey(idempotencyKey).build();
-    };
-  }
 
   @Provides
   @Named(IDEMPOTENCY_KEY)
