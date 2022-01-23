@@ -2,14 +2,14 @@ genrule(
     name = "jooq_codegen",
     outs = ["idempotency_schema.db"],
     srcs = [
-        "//resources/db/jars:flyway-migrations",
+        "//resources/db/sql:flyway-migrations",
         "flyway.conf",
         "@maven-flyway-core",
         "@maven-flyway-commandline",
         "@maven-sqlite-jdbc",
         "@maven-gson",
     ],
-    cmd = """mkdir sql && cp resources/db/jars/* sql && \
+    cmd = """mkdir sql && cp resources/db/sql/* sql && \
 $(ABSOLUTE_JAVABASE)/bin/java -cp \
 $(location @maven-flyway-core):\
 $(location @maven-gson):\
