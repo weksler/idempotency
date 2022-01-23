@@ -85,6 +85,27 @@ java_library(
 )
 
 java_library(
+    name = "flyway-core",
+    runtime_deps = ["@maven-flyway-core"],
+    exports = ["@maven-flyway-core"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "flyway-commandline",
+    runtime_deps = ["@maven-flyway-commandline"],
+    exports = ["@maven-flyway-commandline"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "gson",
+    runtime_deps = ["@maven-gson"],
+    exports = ["@maven-gson"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
     name = "idempotency-core",
     srcs = ["//src/main/java/com/bablooka/idempotency/core:sources"],
     deps = [

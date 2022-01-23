@@ -86,6 +86,27 @@ jvm_maven_import_external(
     licenses = ["notice"],
 )
 
+jvm_maven_import_external(
+    name = "maven-flyway-core",
+    artifact = "org.flywaydb:flyway-core:8.4.2",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
+jvm_maven_import_external(
+    name = "maven-flyway-commandline",
+    artifact = "org.flywaydb:flyway-commandline:8.4.2",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
+jvm_maven_import_external(
+    name = "maven-gson",
+    artifact = "com.google.code.gson:gson:2.8.9",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
 RULES_JVM_EXTERNAL_TAG = "4.2"
 RULES_JVM_EXTERNAL_SHA = "cd1a77b7b02e8e008439ca76fd34f5b07aecb8c752961f9640dea15e9e5ba1ca"
 
