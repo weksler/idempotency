@@ -26,7 +26,7 @@ migrate""",
 
 genrule(
     name = "jooq-generate-daos",
-    outs = ["idempotency-daos.jar"],
+    outs = ["idempotency-daos.srcjar"],
     srcs = [
         "@maven-jooq",
         "@maven-jooq-meta",
@@ -53,6 +53,7 @@ org.jooq.codegen.GenerationTool $(location jooq_config.xml) && \
 jar cvf $@ com
     """,
     message = "Generating jOOQ DAOs from schema",
+    visibility = ["//visibility:public"],
 )
 
 # $(location @maven-jaxb-api):\
