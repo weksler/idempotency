@@ -1,21 +1,23 @@
 package com.bablooka.idempotency.core;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
 
 public interface IdempotentRpc<T extends Object> {
 
-  @Data
-  @AllArgsConstructor
+  @Builder
+  @AllArgsConstructor(access = AccessLevel.PRIVATE)
   class IdempotentRpcContext<T> {
     /** The idempotency key for this request */
-    private String idempotencyKey;
+    @Getter private String idempotencyKey;
 
     /** Process data to be passed around between the various processing phases of this request */
-    private T processData;
+    @Getter private T processData;
 
     /** The response to be returned to the caller */
-    private byte[] response;
+    @Getter private byte[] response;
   }
 
   IdempotentRpcContext prepare(IdempotentRpcContext context);

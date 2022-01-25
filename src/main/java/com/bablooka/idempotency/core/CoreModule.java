@@ -5,15 +5,19 @@ import dagger.Provides;
 import java.time.Clock;
 import java.time.Duration;
 import java.util.UUID;
+import java.util.function.Supplier;
+import javax.inject.Named;
 
 @Module
 public class CoreModule {
+
+  public static final String IDEMPOTENCY_KEY = "idempotency_key";
+
   @Provides
-  static IdempotentRpcContextFactory<String> provideIdempotencyRpcContextFactory() {
-    return () -> {
-      String idempotencyKey = UUID.randomUUID().toString();
-      return new IdempotentRpc.IdempotentRpcContext(idempotencyKey, null, null);
-    };
+  @Named(IDEMPOTENCY_KEY)
+  Supplier<String> provideIdempotencyKeySupplier() {
+    // For now, idempotency key is just a UUID
+    return () -> UUID.randomUUID().toString();
   }
 
   @Provides

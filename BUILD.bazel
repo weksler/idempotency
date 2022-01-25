@@ -64,6 +64,76 @@ java_library(
 )
 
 java_library(
+    name = "jooq",
+    runtime_deps = ["@maven-jooq"],
+    exports = ["@maven-jooq"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "jooq-meta",
+    runtime_deps = ["@maven-jooq-meta"],
+    exports = ["@maven-jooq-meta"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "jooq-codegen",
+    runtime_deps = ["@maven-jooq-codegen"],
+    exports = ["@maven-jooq-codegen"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "r2dbc-spi",
+    runtime_deps = ["@maven-r2dbc-spi"],
+    exports = ["@maven-r2dbc-spi"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "reactive-streams",
+    runtime_deps = ["@maven-reactive-streams"],
+    exports = ["@maven-reactive-streams"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "flyway-core",
+    runtime_deps = ["@maven-flyway-core"],
+    exports = ["@maven-flyway-core"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "flyway-commandline",
+    runtime_deps = ["@maven-flyway-commandline"],
+    exports = ["@maven-flyway-commandline"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "gson",
+    runtime_deps = ["@maven-gson"],
+    exports = ["@maven-gson"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "jaxb-api",
+    runtime_deps = ["@maven-jaxb-api"],
+    exports = ["@maven-jaxb-api"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "jakarta-bind",
+    runtime_deps = ["@maven-jakarta-bind"],
+    exports = ["@maven-jakarta-bind"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
     name = "idempotency-core",
     srcs = ["//src/main/java/com/bablooka/idempotency/core:sources"],
     deps = [

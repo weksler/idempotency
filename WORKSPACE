@@ -65,6 +65,76 @@ jvm_maven_import_external(
     licenses = ["notice"],
 )
 
+jvm_maven_import_external(
+    name = "maven-jooq",
+    artifact = "org.jooq:jooq:3.16.2",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
+jvm_maven_import_external(
+    name = "maven-jooq-meta",
+    artifact = "org.jooq:jooq-meta:3.16.2",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
+jvm_maven_import_external(
+    name = "maven-jooq-codegen",
+    artifact = "org.jooq:jooq-codegen:3.16.2",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
+jvm_maven_import_external(
+    name = "maven-r2dbc-spi",
+    artifact = "io.r2dbc:r2dbc-spi:0.9.0.RELEASE",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
+jvm_maven_import_external(
+    name = "maven-reactive-streams",
+    artifact = "org.reactivestreams:reactive-streams:1.0.3",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
+jvm_maven_import_external(
+    name = "maven-flyway-core",
+    artifact = "org.flywaydb:flyway-core:8.4.2",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
+jvm_maven_import_external(
+    name = "maven-flyway-commandline",
+    artifact = "org.flywaydb:flyway-commandline:8.4.2",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
+jvm_maven_import_external(
+    name = "maven-gson",
+    artifact = "com.google.code.gson:gson:2.8.9",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
+jvm_maven_import_external(
+    name = "maven-jaxb-api",
+    artifact = "javax.xml.bind:jaxb-api:2.3.1",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
+jvm_maven_import_external(
+    name = "maven-jakarta-bind",
+    artifact = "jakarta.xml.bind:jakarta.xml.bind-api:3.0.1",
+    server_urls = ["https://repo.maven.apache.org/maven2"],
+    licenses = ["notice"],
+)
+
 RULES_JVM_EXTERNAL_TAG = "4.2"
 RULES_JVM_EXTERNAL_SHA = "cd1a77b7b02e8e008439ca76fd34f5b07aecb8c752961f9640dea15e9e5ba1ca"
 

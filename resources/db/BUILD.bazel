@@ -1,0 +1,59 @@
+genrule(
+    name = "flyway-migrate-codegen",
+    outs = ["idempotency_schema.db"],
+    srcs = [
+        "//resources/db/sql:flyway-migrations",
+        "flyway.conf",
+        "@maven-flyway-core",
+        "@maven-flyway-commandline",
+        "@maven-sqlite-jdbc",
+        "@maven-gson",
+    ],
+    cmd = """mkdir sql && cp resources/db/sql/* sql && \
+$(ABSOLUTE_JAVABASE)/bin/java -cp \
+$(location @maven-flyway-core):\
+$(location @maven-gson):\
+$(location @maven-flyway-commandline):\
+$(location @maven-sqlite-jdbc) \
+org.flywaydb.commandline.Main \
+-configFiles=$(location flyway.conf) \
+-url=jdbc:sqlite:$@ \
+-locations=filesystem:sql \
+-jarDirs=sql \
+migrate""",
+    message = "Creating DB schema based on migrations",
+)
+
+genrule(
+    name = "jooq-generate-daos",
+    outs = ["idempotency-daos.srcjar"],
+    srcs = [
+        "@maven-jooq",
+        "@maven-jooq-meta",
+        "@maven-jooq-codegen",
+        "@maven-reactive-streams",
+        "@maven-r2dbc-spi",
+        "@maven-sqlite-jdbc",
+        "@maven-jaxb-api",
+        "@maven-jakarta-bind",
+        "idempotency_schema.db",
+        "jooq_config.xml",
+    ],
+    cmd = """$(ABSOLUTE_JAVABASE)/bin/java -cp \
+$(location @maven-jaxb-api):\
+$(location @maven-jakarta-bind):\
+$(location @maven-jooq-codegen):\
+$(location @maven-jooq):\
+$(location @maven-jooq-meta):\
+$(location @maven-reactive-streams):\
+$(location @maven-r2dbc-spi):\
+$(location @maven-sqlite-jdbc) \
+-Djooq.codegen.jdbc.url=jdbc:sqlite:$(location idempotency_schema.db) \
+org.jooq.codegen.GenerationTool $(location jooq_config.xml) && \
+jar cvf $@ com
+    """,
+    message = "Generating jOOQ DAOs from schema",
+    visibility = ["//visibility:public"],
+)
+
+# $(location @maven-jaxb-api):\
