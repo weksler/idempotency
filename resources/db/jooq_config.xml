@@ -1,0 +1,24 @@
+<configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.16.0.xsd">
+    <generator>
+        <database>
+            <name>org.jooq.meta.sqlite.SQLiteDatabase</name>
+            <includes>.*</includes>
+            <excludes>
+                UNUSED_TABLE                # This table (unqualified name) should not be generated
+                | PREFIX_.*                   # Objects with a given prefix should not be generated
+                | SECRET_SCHEMA\.SECRET_TABLE # This table (qualified name) should not be generated
+                | SECRET_ROUTINE              # This routine (unqualified name) ...
+                | flyway_schema_history
+            </excludes>
+        </database>
+
+        <generate/>
+
+        <target>
+            <packageName>com.bablooka.idempotency.dao</packageName>
+
+            <!-- The destination directory of your generated classes -->
+            <directory>.</directory>
+        </target>
+    </generator>
+</configuration>

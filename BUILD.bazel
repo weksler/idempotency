@@ -71,6 +71,20 @@ java_library(
 )
 
 java_library(
+    name = "jooq-meta",
+    runtime_deps = ["@maven-jooq-meta"],
+    exports = ["@maven-jooq-meta"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "jooq-codegen",
+    runtime_deps = ["@maven-jooq-codegen"],
+    exports = ["@maven-jooq-codegen"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
     name = "r2dbc-spi",
     runtime_deps = ["@maven-r2dbc-spi"],
     exports = ["@maven-r2dbc-spi"],
@@ -102,6 +116,20 @@ java_library(
     name = "gson",
     runtime_deps = ["@maven-gson"],
     exports = ["@maven-gson"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "jaxb-api",
+    runtime_deps = ["@maven-jaxb-api"],
+    exports = ["@maven-jaxb-api"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "jakarta-bind",
+    runtime_deps = ["@maven-jakarta-bind"],
+    exports = ["@maven-jakarta-bind"],
     visibility = ["//visibility:public"],
 )
 
