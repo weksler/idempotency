@@ -1,0 +1,19 @@
+sh_binary(
+    name = "migrate_db",
+    srcs = ["migrate_db.sh"],
+    data = [
+        "//resources/db/sql:flyway-migrations",
+        "//resources/db:flyway.conf",
+        "@maven-flyway-core",
+        "@maven-flyway-commandline",
+        "@maven-sqlite-jdbc",
+        "@maven-gson",
+    ],
+    args = [
+        "$(location @maven-flyway-core):$(location @maven-gson):$(location @maven-flyway-commandline):$(location @maven-sqlite-jdbc)",
+        "$(DEVELOPMENT_DB_DIRECTORY)",
+        "$(DEVELOPMENT_DB_NAME)",
+        "$(ABSOLUTE_JAVABASE)/bin/java",
+        "$(location //resources/db:flyway.conf)",
+    ],
+)

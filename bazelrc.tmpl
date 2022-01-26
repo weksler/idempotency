@@ -4,6 +4,10 @@ build --host_javabase=@bazel_tools//tools/jdk:absolute_javabase
 build --java_toolchain=@bazel_tools//tools/jdk:toolchain_vanilla
 build --host_java_toolchain=@bazel_tools//tools/jdk:toolchain_vanilla
 
+# location of development db - localize this to your system.
+build --define=DEVELOPMENT_DB_DIRECTORY=.
+build --define=DEVELOPMENT_DB_NAME=development.db
+
 # See https://github.com/bazelbuild/bazel/issues/12837.
 build --nojava_header_compilation
 test --nojava_header_compilation

@@ -1,5 +1,5 @@
 genrule(
-    name = "flyway-migrate-codegen",
+    name = "flyway-migrate-for-codegen",
     outs = ["idempotency_schema.db"],
     srcs = [
         "//resources/db/sql:flyway-migrations",
@@ -25,7 +25,7 @@ migrate""",
 )
 
 genrule(
-    name = "jooq-generate-daos",
+    name = "daos",
     outs = ["idempotency-daos.srcjar"],
     srcs = [
         "@maven-jooq",
@@ -56,4 +56,4 @@ jar cvf $@ com
     visibility = ["//visibility:public"],
 )
 
-# $(location @maven-jaxb-api):\
+exports_files(["flyway.conf"])
