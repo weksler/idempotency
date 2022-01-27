@@ -134,6 +134,13 @@ java_library(
 )
 
 java_library(
+    name = "commons-cli",
+    runtime_deps = ["@maven-commons-cli"],
+    exports = ["@maven-commons-cli"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
     name = "idempotency-core",
     srcs = ["//src/main/java/com/bablooka/idempotency/core:sources"],
     deps = [

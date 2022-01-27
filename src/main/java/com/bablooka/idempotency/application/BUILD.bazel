@@ -7,6 +7,7 @@ java_binary(
         "//resources:log4j.properties",
     ],
     deps = [
+        "//:commons-cli",
         "//:dagger",
         "//:lombok",
         "//:jooq",
@@ -23,6 +24,11 @@ java_binary(
         "-Dlog4j.configurationFile=resources/log4j.properties",
         "-Dorg.jooq.no-logo=true", # Suppress Jooq's annoying self promo
         "-Dorg.jooq.no-tips=true", # Suppress Jooq's annoying tip of the day
+    ],
+    args = [
+        "-jdbcUrl",
+        "jdbc:sqlite:$(DEVELOPMENT_DB_DIRECTORY)/$(DEVELOPMENT_DB_NAME)",
+
     ],
     main_class = "com.bablooka.idempotency.application.IdempotencyExample",
     visibility = ["//visibility:public"],

@@ -1,18 +1,17 @@
 package com.bablooka.idempotency.application;
 
 import com.bablooka.idempotency.core.IdempotentRpc;
-import java.sql.Connection;
 import javax.inject.Inject;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class FakePaymentProcessor implements IdempotentRpc<String> {
 
-  private final Connection connection;
+  private final IdempotencyConnectionProvider idempotencyConnectionProvider;
 
   @Inject
-  FakePaymentProcessor(Connection connection) {
-    this.connection = connection;
+  FakePaymentProcessor(IdempotencyConnectionProvider idempotencyConnectionProvider) {
+    this.idempotencyConnectionProvider = idempotencyConnectionProvider;
   }
 
   @Override

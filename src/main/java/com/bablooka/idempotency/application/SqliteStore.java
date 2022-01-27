@@ -1,9 +1,10 @@
 package com.bablooka.idempotency.application;
 
+import static com.bablooka.idempotency.dao.tables.Transactions.TRANSACTIONS;
+
 import javax.inject.Inject;
 import lombok.extern.log4j.Log4j2;
 import org.jooq.DSLContext;
-import org.jooq.Record;
 
 @Log4j2
 public class SqliteStore {
@@ -15,11 +16,9 @@ public class SqliteStore {
     this.dslContext = dslContext;
   }
 
-  void createDb() {
-    log.info("About to create the payments table...");
-    Record result =
-        dslContext.fetchSingle(
-            "CREATE TABLE payments (payment_id INTEGER PRIMARY KEY, amount INTEGER, description TEXT);");
-    log.info("Created!");
+  void countRows() {
+    log.info("Counting rows in the transactions table...");
+    int count = dslContext.selectCount().from(TRANSACTIONS).fetchOne(0, int.class);
+    log.info("Tables has {} rows.", count);
   }
 }
