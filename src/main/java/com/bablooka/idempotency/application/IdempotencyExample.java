@@ -5,7 +5,6 @@ import com.bablooka.idempotency.core.IdempotencyStore;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.inject.Inject;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.log4j.Log4j2;
@@ -17,11 +16,23 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
+/**
+ * An example use of the idempotency framework. This code exists primarily to provide the
+ * scaffolding, into which the framework can be built. I am using it to help me develop the core
+ * features of the framework in a mini real world scenario.
+ *
+ * @author Michel Weksler
+ */
 @Log4j2
 public class IdempotencyExample {
 
-  public static final String JDBC_URL = "jdbcUrl";
-
+  /**
+   * Having the config available like this, where it is set from the {@code main} static method, is
+   * not the best idea, as it introduces potential threading and concurrency issues. However, those
+   * issues are mostly theoretical - there will really is only going to be a single main thread -
+   * and the alternative, which is to use dagger's {@code AssistedInject} framework, is a lot more
+   * cumbersome and verbose, and would create more confusion that it is worth.
+   */
   @Getter private static IdempotencyExampleConfig idempotencyExampleConfig;
 
   private final IdempotencyHandler<String> idempotencyHandler;
@@ -29,11 +40,6 @@ public class IdempotencyExample {
   private final IdempotencyStore idempotencyStore;
   private final FakePaymentProcessor fakePaymentProcessor;
   private final SqliteStore sqliteStore;
-
-  @Data
-  private static class Params {
-    String jdbcUrl;
-  }
 
   @Inject
   IdempotencyExample(
@@ -51,14 +57,12 @@ public class IdempotencyExample {
 
   public static void main(String args[]) throws SQLException, IdempotencyExampleException {
     log.info("Starting up!");
-    Params params = parseParams(args);
-    idempotencyExampleConfig =
-        IdempotencyExampleConfig.builder().jdbcUrl(params.getJdbcUrl()).build();
+    idempotencyExampleConfig = parseParams(args);
 
     IdempotencyExampleRoot idempotencyExampleRoot = DaggerIdempotencyExampleRoot.create();
     IdempotencyExample idempotencyExample = idempotencyExampleRoot.idempotencyExample();
 
-    log.info("Creating DB");
+    log.info("Verifying DB connection...");
     idempotencyExample.prepareDb();
 
     log.info("Simulating a payment request");
@@ -78,7 +82,8 @@ public class IdempotencyExample {
     sqliteStore.countRows();
   }
 
-  private static Params parseParams(String[] args) throws IdempotencyExampleException {
+  private static IdempotencyExampleConfig parseParams(String[] args)
+      throws IdempotencyExampleException {
     Options options = new Options();
 
     Option jdbcUrlOption = new Option("u", "jdbcUrl", true, "JDBC url");
@@ -91,10 +96,10 @@ public class IdempotencyExample {
     try {
       CommandLine cmd = parser.parse(options, args);
       String jdbcUrl = cmd.getOptionValue(jdbcUrlOption);
-      Params params = new Params();
-      params.setJdbcUrl(jdbcUrl);
+      IdempotencyExampleConfig idempotencyExampleConfig =
+          IdempotencyExampleConfig.builder().jdbcUrl(jdbcUrl).build();
       log.info("JDBC url is: \"{}\"", jdbcUrl);
-      return params;
+      return idempotencyExampleConfig;
     } catch (ParseException e) {
       log.error(e.getMessage());
       // TODO(weksler): Make this go to the log
