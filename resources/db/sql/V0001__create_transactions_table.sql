@@ -1,5 +1,6 @@
-create table TRANSACTIONS (
-    ID int not null,
-    AMOUNT int not null,
-    DESCRIPTION varchar(100)
+create table transactions (
+    id int not null,
+    amount int not null,
+    status varchar(100) not null,
+    description varchar(100)
 );
