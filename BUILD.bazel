@@ -141,13 +141,27 @@ java_library(
 )
 
 java_library(
+    name = "log4j-api",
+    runtime_deps = ["@maven-log4j-api"],
+    exports = ["@maven-log4j-api"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
+    name = "log4j-core",
+    runtime_deps = ["@maven-log4j-core"],
+    exports = ["@maven-log4j-core"],
+    visibility = ["//visibility:public"],
+)
+
+java_library(
     name = "idempotency-core",
     srcs = ["//src/main/java/com/bablooka/idempotency/core:sources"],
     deps = [
         "//:dagger",
         "//:guava",
         "//:lombok",
-        "@log4j-api",
+        "//:log4j-api",
         "//src/main/java/com/bablooka/idempotency/proto:idempotency_record_java_proto"
     ],
     tags = ["maven_coordinates=com.bablooka:idempotency-core:{pom_version}", "manual"],

@@ -8,7 +8,7 @@ java_library(
         "//:guava",
         "//:lombok",
         "@com_google_protobuf//:protobuf_java",
-        "@log4j-api",
+        "//:log4j-api",
         "//src/main/java/com/bablooka/idempotency/proto:idempotency_record_java_proto"
     ],
     visibility = ["//visibility:public"],

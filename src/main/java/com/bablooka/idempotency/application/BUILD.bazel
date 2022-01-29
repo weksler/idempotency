@@ -11,14 +11,14 @@ java_binary(
         "//:dagger",
         "//:lombok",
         "//:jooq",
-        "@log4j-api",
+        "//:log4j-api",
         "//:r2dbc-spi", # TODO(weksler): Unneeded runtime dependency of jooq - remove it
         "//:reactive-streams", # TODO(weksler): Unneeded runtime dependency of jooq - remove it
         "//:sqlite-jdbc",
         "//src/main/java/com/bablooka/idempotency/core",
     ],
     runtime_deps = [
-        "@log4j-core",
+        "//:log4j-core",
     ],
     jvm_flags = [
         "-Dlog4j.configurationFile=resources/log4j.properties",
