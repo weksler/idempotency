@@ -7,12 +7,12 @@ import lombok.extern.log4j.Log4j2;
 import org.jooq.DSLContext;
 
 @Log4j2
-public class SqliteStore {
+public class TransactionsStore {
 
   private final DSLContext dslContext;
 
   @Inject
-  SqliteStore(DSLContext dslContext) {
+  TransactionsStore(DSLContext dslContext) {
     this.dslContext = dslContext;
   }
 

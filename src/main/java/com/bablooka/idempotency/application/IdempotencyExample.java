@@ -1,5 +1,6 @@
 package com.bablooka.idempotency.application;
 
+import com.bablooka.idempotency.application.FakePaymentProcessor.FakePaymentData;
 import com.bablooka.idempotency.core.IdempotencyHandler;
 import com.bablooka.idempotency.core.IdempotencyStore;
 import java.sql.Connection;
@@ -35,24 +36,24 @@ public class IdempotencyExample {
    */
   @Getter private static IdempotencyExampleConfig idempotencyExampleConfig;
 
-  private final IdempotencyHandler<String> idempotencyHandler;
+  private final IdempotencyHandler<FakePaymentData> idempotencyHandler;
   private final IdempotencyConnectionProvider idempotencyConnectionProvider;
   private final IdempotencyStore idempotencyStore;
   private final FakePaymentProcessor fakePaymentProcessor;
-  private final SqliteStore sqliteStore;
+  private final TransactionsStore transactionsStore;
 
   @Inject
   IdempotencyExample(
-      @NonNull IdempotencyHandler<String> idempotencyHandler,
+      @NonNull IdempotencyHandler<FakePaymentData> idempotencyHandler,
       @NonNull IdempotencyConnectionProvider idempotencyConnectionProvider,
       @NonNull IdempotencyStore idempotencyStore,
       @NonNull FakePaymentProcessor fakePaymentProcessor,
-      @NonNull SqliteStore sqliteStore) {
+      @NonNull TransactionsStore transactionsStore) {
     this.idempotencyHandler = idempotencyHandler;
     this.idempotencyConnectionProvider = idempotencyConnectionProvider;
     this.idempotencyStore = idempotencyStore;
     this.fakePaymentProcessor = fakePaymentProcessor;
-    this.sqliteStore = sqliteStore;
+    this.transactionsStore = transactionsStore;
   }
 
   public static void main(String args[]) throws SQLException, IdempotencyExampleException {
@@ -79,7 +80,7 @@ public class IdempotencyExample {
   }
 
   private void prepareDb() {
-    sqliteStore.countRows();
+    transactionsStore.countRows();
   }
 
   private static IdempotencyExampleConfig parseParams(String[] args)

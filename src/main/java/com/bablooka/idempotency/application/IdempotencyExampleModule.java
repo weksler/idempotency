@@ -3,6 +3,7 @@ package com.bablooka.idempotency.application;
 import static com.bablooka.idempotency.core.CoreModule.IDEMPOTENCY_KEY;
 import static org.jooq.SQLDialect.SQLITE;
 
+import com.bablooka.idempotency.application.FakePaymentProcessor.FakePaymentData;
 import com.bablooka.idempotency.core.CoreModule;
 import com.bablooka.idempotency.core.IdempotencyStore;
 import com.bablooka.idempotency.core.IdempotentRpc.IdempotentRpcContext;
@@ -25,7 +26,7 @@ public class IdempotencyExampleModule {
   }
 
   @Provides
-  IdempotentRpcContextFactory<String> provideIdempotencyRpcContextFactory(
+  IdempotentRpcContextFactory<FakePaymentData> provideIdempotencyRpcContextFactory(
       @Named(IDEMPOTENCY_KEY) Supplier<String> idempotencyKeySupplier) {
     return () -> {
       String idempotencyKey = idempotencyKeySupplier.get();
