@@ -12,8 +12,8 @@ java_binary(
         "//:lombok",
         "//:jooq",
         "//:log4j-api",
-        "//:r2dbc-spi", # TODO(weksler): Unneeded runtime dependency of jooq - remove it
-        "//:reactive-streams", # TODO(weksler): Unneeded runtime dependency of jooq - remove it
+        "//:r2dbc-spi", #  TODO(weksler): Unneeded runtime dependency of jooq - remove it
+        "//:reactive-streams", #  TODO(weksler): Unneeded runtime dependency of jooq - remove it
         "//:sqlite-jdbc",
         "//src/main/java/com/bablooka/idempotency/core",
     ],
