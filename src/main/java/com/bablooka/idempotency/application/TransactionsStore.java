@@ -35,7 +35,6 @@ public class TransactionsStore {
     transactionsRecord.setDescription(fakePaymentData.getPaymentId());
     transactionsRecord.setStatus(String.valueOf(PaymentStatus.PENDING));
     transactionsRecord.store();
-    dslContext.commit("Hooplah!");
     log.info("Stored record for payment {}, id {}", fakePaymentData, transactionsRecord.getId());
   }
 }
