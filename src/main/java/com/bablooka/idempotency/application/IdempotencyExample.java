@@ -74,7 +74,14 @@ public class IdempotencyExample {
 
   private void simulateIncomingPaymentRequest() throws SQLException {
     Connection connection = idempotencyConnectionProvider.acquire();
-    idempotencyHandler.handleRpc(connection, idempotencyStore, fakePaymentProcessor);
+    FakePaymentData fakePaymentData =
+        FakePaymentData.builder()
+            .amountMicros(23_000_000)
+            .paymentId("payment_id")
+            .isoCurrencyCode("USD")
+            .build();
+    idempotencyHandler.handleRpc(
+        connection, idempotencyStore, fakePaymentProcessor, fakePaymentData);
     connection.commit();
     idempotencyConnectionProvider.release(connection);
   }

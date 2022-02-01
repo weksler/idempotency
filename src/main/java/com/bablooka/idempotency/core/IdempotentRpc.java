@@ -20,9 +20,9 @@ public interface IdempotentRpc<T extends Object> {
     @Getter private byte[] response;
   }
 
-  IdempotentRpcContext prepare(IdempotentRpcContext context);
+  IdempotentRpcContext<T> prepare(IdempotentRpcContext<T> context);
 
-  IdempotentRpcContext execute(IdempotentRpcContext context);
+  IdempotentRpcContext<T> execute(IdempotentRpcContext<T> context);
 
-  IdempotentRpcContext processResults(IdempotentRpcContext context);
+  IdempotentRpcContext<T> processResults(IdempotentRpcContext<T> context);
 }

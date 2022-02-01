@@ -28,9 +28,12 @@ public class IdempotencyExampleModule {
   @Provides
   IdempotentRpcContextFactory<FakePaymentData> provideIdempotencyRpcContextFactory(
       @Named(IDEMPOTENCY_KEY) Supplier<String> idempotencyKeySupplier) {
-    return () -> {
+    return (processData) -> {
       String idempotencyKey = idempotencyKeySupplier.get();
-      return IdempotentRpcContext.builder().idempotencyKey(idempotencyKey).build();
+      return IdempotentRpcContext.builder()
+          .idempotencyKey(idempotencyKey)
+          .processData(processData)
+          .build();
     };
   }
 
