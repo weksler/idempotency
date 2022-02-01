@@ -82,7 +82,6 @@ public class IdempotencyExample {
             .build();
     idempotencyHandler.handleRpc(
         connection, idempotencyStore, fakePaymentProcessor, fakePaymentData);
-    connection.commit();
     idempotencyConnectionProvider.release(connection);
   }
 

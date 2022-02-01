@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.inject.Inject;
+import lombok.extern.log4j.Log4j2;
 import org.jooq.ConnectionProvider;
 import org.jooq.exception.DataAccessException;
 
+@Log4j2
 public class IdempotencyConnectionProvider implements ConnectionProvider {
 
   private Connection connection;
@@ -23,18 +25,21 @@ public class IdempotencyConnectionProvider implements ConnectionProvider {
     // Only a single app wide connection!
     try {
       if (connection == null || connection.isClosed()) {
+        log.info("Connection is null or closed. Getting a new one!");
         connection = DriverManager.getConnection(jdbcUrl);
         connection.setAutoCommit(false);
       }
     } catch (SQLException e) {
       throw new DataAccessException("Unable to get a connection to " + jdbcUrl, e);
     }
+    log.info("Acquired connection {}", connection);
     return connection;
   }
 
   @Override
   public synchronized void release(Connection connection) throws DataAccessException {
     try {
+      log.info("Closing connection {}", connection);
       connection.close();
     } catch (SQLException e) {
       throw new DataAccessException("Unable to close DB connection ", e);

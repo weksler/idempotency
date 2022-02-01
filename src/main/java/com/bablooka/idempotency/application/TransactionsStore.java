@@ -34,6 +34,7 @@ public class TransactionsStore {
     transactionsRecord.setIsocurrencycode(fakePaymentData.getIsoCurrencyCode());
     transactionsRecord.setDescription(fakePaymentData.getPaymentId());
     transactionsRecord.setStatus(String.valueOf(PaymentStatus.PENDING));
+    log.info("About to store newly created record.");
     transactionsRecord.store();
     log.info("Stored record for payment {}, id {}", fakePaymentData, transactionsRecord.getId());
   }

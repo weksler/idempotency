@@ -10,6 +10,14 @@
                 | SECRET_ROUTINE              # This routine (unqualified name) ...
                 | flyway_schema_history
             </excludes>
+            <syntheticObjects>
+                <identities>
+                    <identity>
+                        <!-- List all columns that are identities -->
+                        <fields>id</fields>
+                    </identity>
+                </identities>
+            </syntheticObjects>
         </database>
 
         <generate/>
