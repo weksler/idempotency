@@ -11,7 +11,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2-sources.jar",
                     "https://repo1.maven.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2-sources.jar"
                 ],
                 "sha256": "1c9e85e272d0708c6a591dc74828c71603053b48cc75ae83cce56912a2aa063b",
@@ -23,7 +22,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar",
                     "https://repo1.maven.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar"
                 ],
                 "sha256": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
@@ -35,7 +33,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/com/google/code/gson/gson/2.8.9/gson-2.8.9-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/com/google/code/gson/gson/2.8.9/gson-2.8.9-sources.jar",
                     "https://repo1.maven.org/maven2/com/google/code/gson/gson/2.8.9/gson-2.8.9-sources.jar"
                 ],
                 "sha256": "ba5bddb1a89eb721fcca39f3b34294532060f851e2407a82d82134a41eec4719",
@@ -47,7 +44,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/com/google/code/gson/gson/2.8.9/gson-2.8.9.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/com/google/code/gson/gson/2.8.9/gson-2.8.9.jar",
                     "https://repo1.maven.org/maven2/com/google/code/gson/gson/2.8.9/gson-2.8.9.jar"
                 ],
                 "sha256": "d3999291855de495c94c743761b8ab5176cfeabe281a5ab0d8e8d45326fd703e",
@@ -59,7 +55,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/com/google/errorprone/error_prone_annotations/2.7.1/error_prone_annotations-2.7.1-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/com/google/errorprone/error_prone_annotations/2.7.1/error_prone_annotations-2.7.1-sources.jar",
                     "https://repo1.maven.org/maven2/com/google/errorprone/error_prone_annotations/2.7.1/error_prone_annotations-2.7.1-sources.jar"
                 ],
                 "sha256": "e38921f918b8ad8eabd12bc61de426fa96c72de077054e9147d2f9fe7c648923",
@@ -71,7 +66,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/com/google/errorprone/error_prone_annotations/2.7.1/error_prone_annotations-2.7.1.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/com/google/errorprone/error_prone_annotations/2.7.1/error_prone_annotations-2.7.1.jar",
                     "https://repo1.maven.org/maven2/com/google/errorprone/error_prone_annotations/2.7.1/error_prone_annotations-2.7.1.jar"
                 ],
                 "sha256": "cd5257c08a246cf8628817ae71cb822be192ef91f6881ca4a3fcff4f1de1cff3",
@@ -83,7 +77,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1-sources.jar",
                     "https://repo1.maven.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1-sources.jar"
                 ],
                 "sha256": "092346eebbb1657b51aa7485a246bf602bb464cc0b0e2e1c7e7201fadce1e98f",
@@ -95,7 +88,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar",
                     "https://repo1.maven.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar"
                 ],
                 "sha256": "a171ee4c734dd2da837e4b16be9df4661afab72a41adaf31eb84dfdaf936ca26",
@@ -121,7 +113,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/com/google/guava/guava/31.0.1-jre/guava-31.0.1-jre-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/com/google/guava/guava/31.0.1-jre/guava-31.0.1-jre-sources.jar",
                     "https://repo1.maven.org/maven2/com/google/guava/guava/31.0.1-jre/guava-31.0.1-jre-sources.jar"
                 ],
                 "sha256": "fc0fb66f315f10b8713fc43354936d3649a8ad63f789d42fd7c3e55ecf72e092",
@@ -147,7 +138,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/com/google/guava/guava/31.0.1-jre/guava-31.0.1-jre.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/com/google/guava/guava/31.0.1-jre/guava-31.0.1-jre.jar",
                     "https://repo1.maven.org/maven2/com/google/guava/guava/31.0.1-jre/guava-31.0.1-jre.jar"
                 ],
                 "sha256": "d5be94d65e87bd219fb3193ad1517baa55a3b88fc91d21cf735826ab5af087b9",
@@ -159,7 +149,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar",
                     "https://repo1.maven.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar"
                 ],
                 "sha256": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99",
@@ -171,7 +160,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3-sources.jar",
                     "https://repo1.maven.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3-sources.jar"
                 ],
                 "sha256": "ba4df669fec153fa4cd0ef8d02c6d3ef0702b7ac4cabe080facf3b6e490bb972",
@@ -183,7 +171,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.jar",
                     "https://repo1.maven.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.jar"
                 ],
                 "sha256": "21af30c92267bd6122c0e0b4d20cccb6641a37eaf956c6540ec471d584e64a7b",
@@ -195,7 +182,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/com/sun/activation/jakarta.activation/2.0.1/jakarta.activation-2.0.1-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/com/sun/activation/jakarta.activation/2.0.1/jakarta.activation-2.0.1-sources.jar",
                     "https://repo1.maven.org/maven2/com/sun/activation/jakarta.activation/2.0.1/jakarta.activation-2.0.1-sources.jar"
                 ],
                 "sha256": "bf9e7ae8cc8a92a6e2e7f7b3d27b35c4194002dcb90ae8e66b4333a742d3c597",
@@ -207,7 +193,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/com/sun/activation/jakarta.activation/2.0.1/jakarta.activation-2.0.1.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/com/sun/activation/jakarta.activation/2.0.1/jakarta.activation-2.0.1.jar",
                     "https://repo1.maven.org/maven2/com/sun/activation/jakarta.activation/2.0.1/jakarta.activation-2.0.1.jar"
                 ],
                 "sha256": "b9e24b7dd6e07495562ea96531be3130c96dba4d78e1dfd88adbbdebf4332871",
@@ -219,7 +204,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/commons-cli/commons-cli/1.5.0/commons-cli-1.5.0-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/commons-cli/commons-cli/1.5.0/commons-cli-1.5.0-sources.jar",
                     "https://repo1.maven.org/maven2/commons-cli/commons-cli/1.5.0/commons-cli-1.5.0-sources.jar"
                 ],
                 "sha256": "ab59e7a5afa247587c30459b5184cb0f664baeb1e317e165323995783044ac79",
@@ -231,7 +215,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/commons-cli/commons-cli/1.5.0/commons-cli-1.5.0.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/commons-cli/commons-cli/1.5.0/commons-cli-1.5.0.jar",
                     "https://repo1.maven.org/maven2/commons-cli/commons-cli/1.5.0/commons-cli-1.5.0.jar"
                 ],
                 "sha256": "bc8bb01fc0fad250385706e20f927ddcff6173f6339b387dc879237752567ac6",
@@ -247,7 +230,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/io/r2dbc/r2dbc-spi/0.9.0.RELEASE/r2dbc-spi-0.9.0.RELEASE-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/io/r2dbc/r2dbc-spi/0.9.0.RELEASE/r2dbc-spi-0.9.0.RELEASE-sources.jar",
                     "https://repo1.maven.org/maven2/io/r2dbc/r2dbc-spi/0.9.0.RELEASE/r2dbc-spi-0.9.0.RELEASE-sources.jar"
                 ],
                 "sha256": "3507ce7a7bf147a6be354f79afcfecf80a845dc152534e971a16d3e9d6f47ccd",
@@ -263,7 +245,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/io/r2dbc/r2dbc-spi/0.9.0.RELEASE/r2dbc-spi-0.9.0.RELEASE.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/io/r2dbc/r2dbc-spi/0.9.0.RELEASE/r2dbc-spi-0.9.0.RELEASE.jar",
                     "https://repo1.maven.org/maven2/io/r2dbc/r2dbc-spi/0.9.0.RELEASE/r2dbc-spi-0.9.0.RELEASE.jar"
                 ],
                 "sha256": "760c877790baf8529af14f87f623fb0703a72468d0d39af0651747bcdbfc49ed",
@@ -279,7 +260,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/3.0.1/jakarta.xml.bind-api-3.0.1-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/jakarta/xml/bind/jakarta.xml.bind-api/3.0.1/jakarta.xml.bind-api-3.0.1-sources.jar",
                     "https://repo1.maven.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/3.0.1/jakarta.xml.bind-api-3.0.1-sources.jar"
                 ],
                 "sha256": "3a2971696cba5ceefe2e730a05b3c5e8dd610e35396c16208597d74aae7dcbd4",
@@ -295,7 +275,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/3.0.1/jakarta.xml.bind-api-3.0.1.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/jakarta/xml/bind/jakarta.xml.bind-api/3.0.1/jakarta.xml.bind-api-3.0.1.jar",
                     "https://repo1.maven.org/maven2/jakarta/xml/bind/jakarta.xml.bind-api/3.0.1/jakarta.xml.bind-api-3.0.1.jar"
                 ],
                 "sha256": "b8fb4bee3ff5b5c1ef77144d8411316018d7bbd41fcf1ede0646f7978546b867",
@@ -307,7 +286,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0-sources.jar",
                     "https://repo1.maven.org/maven2/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0-sources.jar"
                 ],
                 "sha256": "d7411fb29089cafa4b77493f10bfb52832cd1976948903d0b039e12b0bd70334",
@@ -319,7 +297,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar",
                     "https://repo1.maven.org/maven2/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar"
                 ],
                 "sha256": "43fdef0b5b6ceb31b0424b208b930c74ab58fac2ceeb7b3f6fd3aeb8b5ca4393",
@@ -335,7 +312,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1-sources.jar",
                     "https://repo1.maven.org/maven2/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1-sources.jar"
                 ],
                 "sha256": "d69dc2c28833df5fb6e916efae01477ae936326b342d479a43539b0131c96b9d",
@@ -351,7 +327,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar",
                     "https://repo1.maven.org/maven2/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar"
                 ],
                 "sha256": "88b955a0df57880a26a74708bc34f74dcaf8ebf4e78843a28b50eae945732b06",
@@ -367,7 +342,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/junit/junit/4.13.2/junit-4.13.2-sources.jar",
                     "https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2-sources.jar"
                 ],
                 "sha256": "34181df6482d40ea4c046b063cb53c7ffae94bdf1b1d62695bdf3adf9dea7e3a",
@@ -383,7 +357,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/junit/junit/4.13.2/junit-4.13.2.jar",
                     "https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar"
                 ],
                 "sha256": "8e495b634469d64fb8acfa3495a065cbacc8a0fff55ce1e31007be4c16dc57d3",
@@ -395,7 +368,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/net/bytebuddy/byte-buddy-agent/1.12.6/byte-buddy-agent-1.12.6-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/net/bytebuddy/byte-buddy-agent/1.12.6/byte-buddy-agent-1.12.6-sources.jar",
                     "https://repo1.maven.org/maven2/net/bytebuddy/byte-buddy-agent/1.12.6/byte-buddy-agent-1.12.6-sources.jar"
                 ],
                 "sha256": "8ce70efc79b14e8c302771fdfa2c0634262caca06f3d3c6b3da6fac1a919e3a3",
@@ -407,7 +379,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/net/bytebuddy/byte-buddy-agent/1.12.6/byte-buddy-agent-1.12.6.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/net/bytebuddy/byte-buddy-agent/1.12.6/byte-buddy-agent-1.12.6.jar",
                     "https://repo1.maven.org/maven2/net/bytebuddy/byte-buddy-agent/1.12.6/byte-buddy-agent-1.12.6.jar"
                 ],
                 "sha256": "9b29421fe4650b75fc3ed53590f914c54f932e334b3506cc00296dff73024183",
@@ -419,7 +390,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/net/bytebuddy/byte-buddy/1.12.6/byte-buddy-1.12.6-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/net/bytebuddy/byte-buddy/1.12.6/byte-buddy-1.12.6-sources.jar",
                     "https://repo1.maven.org/maven2/net/bytebuddy/byte-buddy/1.12.6/byte-buddy-1.12.6-sources.jar"
                 ],
                 "sha256": "746ed33a92f470949d390afe97dd32f8b72d68914300a8e4172d447de403e62b",
@@ -431,7 +401,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/net/bytebuddy/byte-buddy/1.12.6/byte-buddy-1.12.6.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/net/bytebuddy/byte-buddy/1.12.6/byte-buddy-1.12.6.jar",
                     "https://repo1.maven.org/maven2/net/bytebuddy/byte-buddy/1.12.6/byte-buddy-1.12.6.jar"
                 ],
                 "sha256": "211918dc24f0fdef4335ce8af40ef5616e15e818b962a21146397c7701eb75a7",
@@ -443,7 +412,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/2.17.1/log4j-api-2.17.1-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/apache/logging/log4j/log4j-api/2.17.1/log4j-api-2.17.1-sources.jar",
                     "https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/2.17.1/log4j-api-2.17.1-sources.jar"
                 ],
                 "sha256": "198c1e77d61a46fc08d323e1931cd20b430d8a4114a17658b64d15ddb2d902b0",
@@ -455,7 +423,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/2.17.1/log4j-api-2.17.1.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/apache/logging/log4j/log4j-api/2.17.1/log4j-api-2.17.1.jar",
                     "https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/2.17.1/log4j-api-2.17.1.jar"
                 ],
                 "sha256": "b0d8a4c8ab4fb8b1888d0095822703b0e6d4793c419550203da9e69196161de4",
@@ -471,7 +438,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/apache/logging/log4j/log4j-core/2.17.1/log4j-core-2.17.1-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/apache/logging/log4j/log4j-core/2.17.1/log4j-core-2.17.1-sources.jar",
                     "https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-core/2.17.1/log4j-core-2.17.1-sources.jar"
                 ],
                 "sha256": "51cc2d5e9eedb7eca77f4fb19d38d2c97084c818013e14a1b2c8d38aea627792",
@@ -487,7 +453,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/apache/logging/log4j/log4j-core/2.17.1/log4j-core-2.17.1.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/apache/logging/log4j/log4j-core/2.17.1/log4j-core-2.17.1.jar",
                     "https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-core/2.17.1/log4j-core-2.17.1.jar"
                 ],
                 "sha256": "c967f223487980b9364e94a7c7f9a8a01fd3ee7c19bdbf0b0f9f8cb8511f3d41",
@@ -499,7 +464,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0-sources.jar",
                     "https://repo1.maven.org/maven2/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0-sources.jar"
                 ],
                 "sha256": "fd99a45195ed893803624d1030387056a96601013f5e61ccabd79abb4ddfa876",
@@ -511,7 +475,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.jar",
                     "https://repo1.maven.org/maven2/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.jar"
                 ],
                 "sha256": "ff10785ac2a357ec5de9c293cb982a2cbb605c0309ea4cc1cb9b9bc6dbe7f3cb",
@@ -543,7 +506,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/flywaydb/flyway-commandline/8.4.2/flyway-commandline-8.4.2-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/flywaydb/flyway-commandline/8.4.2/flyway-commandline-8.4.2-sources.jar",
                     "https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/8.4.2/flyway-commandline-8.4.2-sources.jar"
                 ],
                 "sha256": "611e2149bf40d71f59fedfe09a125dee4dd40e49916f59bf65a83eb779ba4700",
@@ -575,7 +537,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/flywaydb/flyway-commandline/8.4.2/flyway-commandline-8.4.2.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/flywaydb/flyway-commandline/8.4.2/flyway-commandline-8.4.2.jar",
                     "https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/8.4.2/flyway-commandline-8.4.2.jar"
                 ],
                 "sha256": "182eadacd3f15a944b318fb803f28cc10d3eda3c9d3243352ddeb05b07ab7df8",
@@ -593,7 +554,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/flywaydb/flyway-community-db-support/8.4.2/flyway-community-db-support-8.4.2-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/flywaydb/flyway-community-db-support/8.4.2/flyway-community-db-support-8.4.2-sources.jar",
                     "https://repo1.maven.org/maven2/org/flywaydb/flyway-community-db-support/8.4.2/flyway-community-db-support-8.4.2-sources.jar"
                 ],
                 "sha256": "8601df3c6ce754368f7d180b16f70dd78a8c2d594f5ed9480b2dfac693318f6d",
@@ -611,7 +571,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/flywaydb/flyway-community-db-support/8.4.2/flyway-community-db-support-8.4.2.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/flywaydb/flyway-community-db-support/8.4.2/flyway-community-db-support-8.4.2.jar",
                     "https://repo1.maven.org/maven2/org/flywaydb/flyway-community-db-support/8.4.2/flyway-community-db-support-8.4.2.jar"
                 ],
                 "sha256": "78ce418824287b8b0e732009aab030e29421a9c6410f1699ddd348e80d84aa89",
@@ -623,7 +582,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/flywaydb/flyway-core/8.4.2/flyway-core-8.4.2-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/flywaydb/flyway-core/8.4.2/flyway-core-8.4.2-sources.jar",
                     "https://repo1.maven.org/maven2/org/flywaydb/flyway-core/8.4.2/flyway-core-8.4.2-sources.jar"
                 ],
                 "sha256": "9e475d6598fc1645a1595af3ba52284ba53062b4326ce74eca6c3e23aa651c61",
@@ -635,7 +593,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/flywaydb/flyway-core/8.4.2/flyway-core-8.4.2.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/flywaydb/flyway-core/8.4.2/flyway-core-8.4.2.jar",
                     "https://repo1.maven.org/maven2/org/flywaydb/flyway-core/8.4.2/flyway-core-8.4.2.jar"
                 ],
                 "sha256": "32516fbd0fe9d5330e33a454e4d3e5378157a7b627b8aec5e73902d3c3eca2d1",
@@ -651,7 +608,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/flywaydb/flyway-firebird/8.4.2/flyway-firebird-8.4.2-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/flywaydb/flyway-firebird/8.4.2/flyway-firebird-8.4.2-sources.jar",
                     "https://repo1.maven.org/maven2/org/flywaydb/flyway-firebird/8.4.2/flyway-firebird-8.4.2-sources.jar"
                 ],
                 "sha256": "f44daae021ae58408882d5a5e3ecd3f254c74635991565fd67e717237bc65d6b",
@@ -667,7 +623,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/flywaydb/flyway-firebird/8.4.2/flyway-firebird-8.4.2.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/flywaydb/flyway-firebird/8.4.2/flyway-firebird-8.4.2.jar",
                     "https://repo1.maven.org/maven2/org/flywaydb/flyway-firebird/8.4.2/flyway-firebird-8.4.2.jar"
                 ],
                 "sha256": "081201aca64e7165a1ba4451d7d0a690b2e89f57a3f836135c3c89c471770f12",
@@ -683,7 +638,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/flywaydb/flyway-gcp-bigquery/8.4.2-beta/flyway-gcp-bigquery-8.4.2-beta-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/flywaydb/flyway-gcp-bigquery/8.4.2-beta/flyway-gcp-bigquery-8.4.2-beta-sources.jar",
                     "https://repo1.maven.org/maven2/org/flywaydb/flyway-gcp-bigquery/8.4.2-beta/flyway-gcp-bigquery-8.4.2-beta-sources.jar"
                 ],
                 "sha256": "b0cdf3ca37eadd58e60d1f83a299c3624d077536f18c5080eefadf7ffa2cbef7",
@@ -699,7 +653,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/flywaydb/flyway-gcp-bigquery/8.4.2-beta/flyway-gcp-bigquery-8.4.2-beta.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/flywaydb/flyway-gcp-bigquery/8.4.2-beta/flyway-gcp-bigquery-8.4.2-beta.jar",
                     "https://repo1.maven.org/maven2/org/flywaydb/flyway-gcp-bigquery/8.4.2-beta/flyway-gcp-bigquery-8.4.2-beta.jar"
                 ],
                 "sha256": "777863c752dda966125dfe46e09e4a763e0098d0b8aed647d5a0569ae3c983ea",
@@ -715,7 +668,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/flywaydb/flyway-gcp-spanner/8.4.2-beta/flyway-gcp-spanner-8.4.2-beta-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/flywaydb/flyway-gcp-spanner/8.4.2-beta/flyway-gcp-spanner-8.4.2-beta-sources.jar",
                     "https://repo1.maven.org/maven2/org/flywaydb/flyway-gcp-spanner/8.4.2-beta/flyway-gcp-spanner-8.4.2-beta-sources.jar"
                 ],
                 "sha256": "425479d268e842b3ef552cd91b694f9a17936622d3503384d7cc1739b095e2ca",
@@ -731,7 +683,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/flywaydb/flyway-gcp-spanner/8.4.2-beta/flyway-gcp-spanner-8.4.2-beta.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/flywaydb/flyway-gcp-spanner/8.4.2-beta/flyway-gcp-spanner-8.4.2-beta.jar",
                     "https://repo1.maven.org/maven2/org/flywaydb/flyway-gcp-spanner/8.4.2-beta/flyway-gcp-spanner-8.4.2-beta.jar"
                 ],
                 "sha256": "5e586a8dd93bca44fe906a2b9d6b74dc2d325e0ee10488893a1e059c7d10c01b",
@@ -747,7 +698,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/flywaydb/flyway-mysql/8.4.2/flyway-mysql-8.4.2-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/flywaydb/flyway-mysql/8.4.2/flyway-mysql-8.4.2-sources.jar",
                     "https://repo1.maven.org/maven2/org/flywaydb/flyway-mysql/8.4.2/flyway-mysql-8.4.2-sources.jar"
                 ],
                 "sha256": "92947d64e60d94aa0f3f3cf0c8d94947daf87e53dba194c953578a30a55ea8f0",
@@ -763,7 +713,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/flywaydb/flyway-mysql/8.4.2/flyway-mysql-8.4.2.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/flywaydb/flyway-mysql/8.4.2/flyway-mysql-8.4.2.jar",
                     "https://repo1.maven.org/maven2/org/flywaydb/flyway-mysql/8.4.2/flyway-mysql-8.4.2.jar"
                 ],
                 "sha256": "2a021e463c7bb1869694e9ca7a885e33fe8aad9b429817d0a0413964495ab9d2",
@@ -779,7 +728,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/flywaydb/flyway-sqlserver/8.4.2/flyway-sqlserver-8.4.2-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/flywaydb/flyway-sqlserver/8.4.2/flyway-sqlserver-8.4.2-sources.jar",
                     "https://repo1.maven.org/maven2/org/flywaydb/flyway-sqlserver/8.4.2/flyway-sqlserver-8.4.2-sources.jar"
                 ],
                 "sha256": "35a37e6dc660e822d01c327d1694f65278874be01e3776b41aee809ddd84b07f",
@@ -795,7 +743,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/flywaydb/flyway-sqlserver/8.4.2/flyway-sqlserver-8.4.2.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/flywaydb/flyway-sqlserver/8.4.2/flyway-sqlserver-8.4.2.jar",
                     "https://repo1.maven.org/maven2/org/flywaydb/flyway-sqlserver/8.4.2/flyway-sqlserver-8.4.2.jar"
                 ],
                 "sha256": "43a43ee4575606cbcd1c01d89c7fd402a000153588d15b9aa13813a4ab13003c",
@@ -807,7 +754,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.18/jansi-1.18-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/fusesource/jansi/jansi/1.18/jansi-1.18-sources.jar",
                     "https://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.18/jansi-1.18-sources.jar"
                 ],
                 "sha256": "dcddb789ebf8efd8cedbafad6619a510fb5489600edd53d6c3aed5365fba215d",
@@ -819,7 +765,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.18/jansi-1.18.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/fusesource/jansi/jansi/1.18/jansi-1.18.jar",
                     "https://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.18/jansi-1.18.jar"
                 ],
                 "sha256": "109e64fc65767c7a1a3bd654709d76f107b0a3b39db32cbf11139e13a6f5229b",
@@ -831,7 +776,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar",
                     "https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar"
                 ],
                 "sha256": "e223d2d8fbafd66057a8848cc94222d63c3cedd652cc48eddc0ab5c39c0f84df",
@@ -843,7 +787,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar",
                     "https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"
                 ],
                 "sha256": "66fdef91e9739348df7a096aa384a5685f4e875584cce89386a7a47251c4d8e9",
@@ -864,7 +807,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/jooq/jooq-codegen/3.16.2/jooq-codegen-3.16.2-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/jooq/jooq-codegen/3.16.2/jooq-codegen-3.16.2-sources.jar",
                     "https://repo1.maven.org/maven2/org/jooq/jooq-codegen/3.16.2/jooq-codegen-3.16.2-sources.jar"
                 ],
                 "sha256": "23f02dbd2c6796251ef944e7e548de3657a5a134dd67a5b82ea9cfdaf43bd8ee",
@@ -885,7 +827,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/jooq/jooq-codegen/3.16.2/jooq-codegen-3.16.2.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/jooq/jooq-codegen/3.16.2/jooq-codegen-3.16.2.jar",
                     "https://repo1.maven.org/maven2/org/jooq/jooq-codegen/3.16.2/jooq-codegen-3.16.2.jar"
                 ],
                 "sha256": "c49cd9fd3e56524f479d52ceea2350d28c988b9ccd31eaecf430c4b19b4c7cd8",
@@ -904,7 +845,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/jooq/jooq-meta/3.16.2/jooq-meta-3.16.2-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/jooq/jooq-meta/3.16.2/jooq-meta-3.16.2-sources.jar",
                     "https://repo1.maven.org/maven2/org/jooq/jooq-meta/3.16.2/jooq-meta-3.16.2-sources.jar"
                 ],
                 "sha256": "59fcef5419444a4bc2aabb0028a17382843f25f14c2b48aad288057737997881",
@@ -923,7 +863,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/jooq/jooq-meta/3.16.2/jooq-meta-3.16.2.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/jooq/jooq-meta/3.16.2/jooq-meta-3.16.2.jar",
                     "https://repo1.maven.org/maven2/org/jooq/jooq-meta/3.16.2/jooq-meta-3.16.2.jar"
                 ],
                 "sha256": "2f757f7984eec71911908ea01aaf849cf9528137a13a23c0ca588378c97f88ca",
@@ -942,7 +881,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/jooq/jooq/3.16.2/jooq-3.16.2-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/jooq/jooq/3.16.2/jooq-3.16.2-sources.jar",
                     "https://repo1.maven.org/maven2/org/jooq/jooq/3.16.2/jooq-3.16.2-sources.jar"
                 ],
                 "sha256": "be0cc534999d6f349b6662abe267706cc377467851319bb602d44809ddcf2b66",
@@ -961,7 +899,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/jooq/jooq/3.16.2/jooq-3.16.2.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/jooq/jooq/3.16.2/jooq-3.16.2.jar",
                     "https://repo1.maven.org/maven2/org/jooq/jooq/3.16.2/jooq-3.16.2.jar"
                 ],
                 "sha256": "7c439f00bffbe8f7719300150b25a759a1a12db5c439eb883d19e94120291fff",
@@ -981,7 +918,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/mockito/mockito-core/4.2.0/mockito-core-4.2.0-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/mockito/mockito-core/4.2.0/mockito-core-4.2.0-sources.jar",
                     "https://repo1.maven.org/maven2/org/mockito/mockito-core/4.2.0/mockito-core-4.2.0-sources.jar"
                 ],
                 "sha256": "eb1b78f2eebe6bbe83dd361f0a354286f91fe08026538df886d4e49117c50e5b",
@@ -1001,7 +937,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/mockito/mockito-core/4.2.0/mockito-core-4.2.0.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/mockito/mockito-core/4.2.0/mockito-core-4.2.0.jar",
                     "https://repo1.maven.org/maven2/org/mockito/mockito-core/4.2.0/mockito-core-4.2.0.jar"
                 ],
                 "sha256": "8dba45f02aafe51d544a17d594f467d0f7b42ca82432d8bee2c29e5a36be4b21",
@@ -1020,7 +955,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/mockito/mockito-inline/4.2.0/mockito-inline-4.2.0-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/mockito/mockito-inline/4.2.0/mockito-inline-4.2.0-sources.jar",
                     "https://repo1.maven.org/maven2/org/mockito/mockito-inline/4.2.0/mockito-inline-4.2.0-sources.jar"
                 ],
                 "sha256": "ee52e1c299a632184fba274a9370993e09140429f5e516e6c5570fd6574b297f",
@@ -1039,7 +973,6 @@
                 ],
                 "file": "v1/https/repo1.maven.org/maven2/org/mockito/mockito-inline/4.2.0/mockito-inline-4.2.0.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/mockito/mockito-inline/4.2.0/mockito-inline-4.2.0.jar",
                     "https://repo1.maven.org/maven2/org/mockito/mockito-inline/4.2.0/mockito-inline-4.2.0.jar"
                 ],
                 "sha256": "ee52e1c299a632184fba274a9370993e09140429f5e516e6c5570fd6574b297f",
@@ -1051,7 +984,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/objenesis/objenesis/3.2/objenesis-3.2-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/objenesis/objenesis/3.2/objenesis-3.2-sources.jar",
                     "https://repo1.maven.org/maven2/org/objenesis/objenesis/3.2/objenesis-3.2-sources.jar"
                 ],
                 "sha256": "56a7987f5746bd809c363e29055c41f5472a086b0e0e32248693e064d10bc306",
@@ -1063,7 +995,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/objenesis/objenesis/3.2/objenesis-3.2.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/objenesis/objenesis/3.2/objenesis-3.2.jar",
                     "https://repo1.maven.org/maven2/org/objenesis/objenesis/3.2/objenesis-3.2.jar"
                 ],
                 "sha256": "03d960bd5aef03c653eb000413ada15eb77cdd2b8e4448886edf5692805e35f3",
@@ -1075,7 +1006,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/projectlombok/lombok/1.18.20/lombok-1.18.20-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/projectlombok/lombok/1.18.20/lombok-1.18.20-sources.jar",
                     "https://repo1.maven.org/maven2/org/projectlombok/lombok/1.18.20/lombok-1.18.20-sources.jar"
                 ],
                 "sha256": "c35890b314156f4a0c15dbe2c73c16f7ddc50d97db53c90aa8278d0de708e46e",
@@ -1087,7 +1017,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar",
                     "https://repo1.maven.org/maven2/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar"
                 ],
                 "sha256": "ce947be6c2fbe759fbbe8ef3b42b6825f814c98c8853f1013f2d9630cedf74b0",
@@ -1099,7 +1028,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/reactivestreams/reactive-streams/1.0.3/reactive-streams-1.0.3-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/reactivestreams/reactive-streams/1.0.3/reactive-streams-1.0.3-sources.jar",
                     "https://repo1.maven.org/maven2/org/reactivestreams/reactive-streams/1.0.3/reactive-streams-1.0.3-sources.jar"
                 ],
                 "sha256": "d5b4070a22c9b1ca5b9b5aa668466bcca391dbe5d5fe8311c300765c1621feba",
@@ -1111,7 +1039,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/reactivestreams/reactive-streams/1.0.3/reactive-streams-1.0.3.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/reactivestreams/reactive-streams/1.0.3/reactive-streams-1.0.3.jar",
                     "https://repo1.maven.org/maven2/org/reactivestreams/reactive-streams/1.0.3/reactive-streams-1.0.3.jar"
                 ],
                 "sha256": "1dee0481072d19c929b623e155e14d2f6085dc011529a0a0dbefc84cf571d865",
@@ -1123,7 +1050,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/xerial/sqlite-jdbc/3.34.0/sqlite-jdbc-3.34.0-sources.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/xerial/sqlite-jdbc/3.34.0/sqlite-jdbc-3.34.0-sources.jar",
                     "https://repo1.maven.org/maven2/org/xerial/sqlite-jdbc/3.34.0/sqlite-jdbc-3.34.0-sources.jar"
                 ],
                 "sha256": "e0c494fe9e7b719a0fe270bf19e63b26c821fce0a29c9066f5d1c39b9d38a6c0",
@@ -1135,7 +1061,6 @@
                 "directDependencies": [],
                 "file": "v1/https/repo1.maven.org/maven2/org/xerial/sqlite-jdbc/3.34.0/sqlite-jdbc-3.34.0.jar",
                 "mirror_urls": [
-                    "https://maven.google.com/org/xerial/sqlite-jdbc/3.34.0/sqlite-jdbc-3.34.0.jar",
                     "https://repo1.maven.org/maven2/org/xerial/sqlite-jdbc/3.34.0/sqlite-jdbc-3.34.0.jar"
                 ],
                 "sha256": "605979c94e7fe00437f1e10dcfa657a23f125c8eb4d2f0ec17e3f84613894cc3",
