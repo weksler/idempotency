@@ -4,13 +4,13 @@ sh_binary(
     data = [
         "//resources/db/sql:flyway-migrations",
         "//resources/db:flyway.conf",
-        "@maven-flyway-core",
-        "@maven-flyway-commandline",
-        "@maven-sqlite-jdbc",
-        "@maven-gson",
+        "@maven-deps//:org_flywaydb_flyway_core",
+        "@maven-deps//:org_flywaydb_flyway_commandline",
+        "@maven-deps//:org_xerial_sqlite_jdbc",
+        "@maven-deps//:com_google_code_gson_gson",
     ],
     args = [
-        "$(location @maven-flyway-core):$(location @maven-gson):$(location @maven-flyway-commandline):$(location @maven-sqlite-jdbc)",
+        "$(location @maven-deps//:org_flywaydb_flyway_core):$(location @maven-deps//:com_google_code_gson_gson):$(location @maven-deps//:org_flywaydb_flyway_commandline):$(location @maven-deps//:org_xerial_sqlite_jdbc)",
         "$(DEVELOPMENT_DB_DIRECTORY)",
         "$(DEVELOPMENT_DB_NAME)",
         "$(ABSOLUTE_JAVABASE)/bin/java",

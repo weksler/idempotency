@@ -1,188 +1,59 @@
 load("@rules_java//java:defs.bzl", "java_library")
-load("@graknlabs_bazel_distribution//maven/templates:rules.bzl", "deploy_maven", "assemble_maven")
+load("@graknlabs_bazel_distribution//maven/templates:rules.bzl", "assemble_maven", "deploy_maven")
 load("@dagger//:workspace_defs.bzl", "dagger_rules")
+
 dagger_rules()
 
 java_plugin(
     name = "lombok_plugin",
     generates_api = True,
     processor_class = "lombok.launch.AnnotationProcessorHider$AnnotationProcessor",
-    deps = ["@maven-lombok"],
+    deps = ["@maven-deps//:org_projectlombok_lombok"],
 )
 
 java_library(
     name = "lombok",
     exported_plugins = [":lombok_plugin"],
     visibility = ["//visibility:public"],
-    exports = ["@maven-lombok"],
-)
-
-java_library(
-    name = "mockito",
-    runtime_deps = ["@maven-mockito"],
-    exports = ["@maven-mockito"],
-    testonly = 1,
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "mockito-inline",
-    runtime_deps = ["@maven-mockito-inline"],
-    exports = ["@maven-mockito-inline"],
-    testonly = 1,
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "bytebuddy",
-    runtime_deps = ["@maven-bytebuddy"],
-    exports = ["@maven-bytebuddy"],
-    testonly = 1,
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "bytebuddy-agent",
-    runtime_deps = ["@maven-bytebuddy-agent"],
-    exports = ["@maven-bytebuddy-agent"],
-    testonly = 1,
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "guava",
-    runtime_deps = ["@maven-guava"],
-    exports = ["@maven-guava"],
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "sqlite-jdbc",
-    runtime_deps = ["@maven-sqlite-jdbc"],
-    exports = ["@maven-sqlite-jdbc"],
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "jooq",
-    runtime_deps = ["@maven-jooq"],
-    exports = ["@maven-jooq"],
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "jooq-meta",
-    runtime_deps = ["@maven-jooq-meta"],
-    exports = ["@maven-jooq-meta"],
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "jooq-codegen",
-    runtime_deps = ["@maven-jooq-codegen"],
-    exports = ["@maven-jooq-codegen"],
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "r2dbc-spi",
-    runtime_deps = ["@maven-r2dbc-spi"],
-    exports = ["@maven-r2dbc-spi"],
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "reactive-streams",
-    runtime_deps = ["@maven-reactive-streams"],
-    exports = ["@maven-reactive-streams"],
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "flyway-core",
-    runtime_deps = ["@maven-flyway-core"],
-    exports = ["@maven-flyway-core"],
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "flyway-commandline",
-    runtime_deps = ["@maven-flyway-commandline"],
-    exports = ["@maven-flyway-commandline"],
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "gson",
-    runtime_deps = ["@maven-gson"],
-    exports = ["@maven-gson"],
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "jaxb-api",
-    runtime_deps = ["@maven-jaxb-api"],
-    exports = ["@maven-jaxb-api"],
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "jakarta-bind",
-    runtime_deps = ["@maven-jakarta-bind"],
-    exports = ["@maven-jakarta-bind"],
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "commons-cli",
-    runtime_deps = ["@maven-commons-cli"],
-    exports = ["@maven-commons-cli"],
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "log4j-api",
-    runtime_deps = ["@maven-log4j-api"],
-    exports = ["@maven-log4j-api"],
-    visibility = ["//visibility:public"],
-)
-
-java_library(
-    name = "log4j-core",
-    runtime_deps = ["@maven-log4j-core"],
-    exports = ["@maven-log4j-core"],
-    visibility = ["//visibility:public"],
+    exports = ["@maven-deps//:org_projectlombok_lombok"],
 )
 
 java_library(
     name = "idempotency-core",
     srcs = ["//src/main/java/com/bablooka/idempotency/core:sources"],
+    tags = [
+        "manual",
+        "maven_coordinates=com.bablooka:idempotency-core:{pom_version}",
+    ],
+    visibility = ["//:__subpackages__"],
     deps = [
         "//:dagger",
-        "//:guava",
         "//:lombok",
-        "//:log4j-api",
-        "//src/main/java/com/bablooka/idempotency/proto:idempotency_record_java_proto"
+        "//src/main/java/com/bablooka/idempotency/proto:idempotency_record_java_proto",
+        "@maven-deps//:com_google_guava_guava",
+        "@maven-deps//:org_apache_logging_log4j_log4j_api",
     ],
-    tags = ["maven_coordinates=com.bablooka:idempotency-core:{pom_version}", "manual"],
-    visibility = ["//:__subpackages__"],
 )
 
 assemble_maven(
     name = "assemble-maven",
-    target = "//:idempotency-core",
+    developers = {"1": [
+        "name=Michael Weksler",
+        "email=m...@b...m",
+        "organization=Bablooka",
+    ]},
+    license = "mit",
     package = "{maven_packages}",
-    project_name = "Idempotency Core",
     project_description = "Idempotecy - Java library for idempotency",
+    project_name = "Idempotency Core",
     project_url = "https://github.com/weksler/idempotecy",
     scm_url = "https://github.com/weksler/idempotency.git",
+    target = "//:idempotency-core",
     version_file = "//deploy:VERSION",
-    developers = {"1": ["name=Michael Weksler", "email=m...@b...m", "organization=Bablooka"]},
-    license = "mit"
 )
 
 deploy_maven(
     name = "deploy-maven",
+    deployment_properties = "//deploy:deployment.properties",
     target = ":assemble-maven",
-    deployment_properties = "//deploy:deployment.properties"
 )

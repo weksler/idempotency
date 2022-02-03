@@ -3,19 +3,19 @@ load("@rules_java//java:defs.bzl", "java_library")
 java_library(
     name = "core",
     srcs = [":sources"],
+    visibility = ["//visibility:public"],
     deps = [
         "//:dagger",
-        "//:guava",
         "//:lombok",
+        "//src/main/java/com/bablooka/idempotency/proto:idempotency_record_java_proto",
         "@com_google_protobuf//:protobuf_java",
-        "//:log4j-api",
-        "//src/main/java/com/bablooka/idempotency/proto:idempotency_record_java_proto"
+        "@maven-deps//:com_google_guava_guava",
+        "@maven-deps//:org_apache_logging_log4j_log4j_api",
     ],
-    visibility = ["//visibility:public"],
 )
 
 filegroup(
-   name = "sources",
-   srcs = glob(["*.java"]),
-   visibility = ["//:__subpackages__"],
+    name = "sources",
+    srcs = glob(["*.java"]),
+    visibility = ["//:__subpackages__"],
 )

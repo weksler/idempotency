@@ -3,33 +3,34 @@ load("@rules_java//java:defs.bzl", "java_library")
 java_binary(
     name = "application",
     srcs = glob(["*.java"]) + ["//resources/db:daos"],
-    data = [
-        "//resources:log4j.properties",
-    ],
-    deps = [
-        "//:commons-cli",
-        "//:dagger",
-        "//:lombok",
-        "//:jooq",
-        "//:log4j-api",
-        "//:r2dbc-spi", #  TODO(weksler): Unneeded runtime dependency of jooq - remove it
-        "//:reactive-streams", #  TODO(weksler): Unneeded runtime dependency of jooq - remove it
-        "//:sqlite-jdbc",
-        "//src/main/java/com/bablooka/idempotency/core",
-    ],
-    runtime_deps = [
-        "//:log4j-core",
-    ],
-    jvm_flags = [
-        "-Dlog4j.configurationFile=resources/log4j.properties",
-        "-Dorg.jooq.no-logo=true", # Suppress Jooq's annoying self promo
-        "-Dorg.jooq.no-tips=true", # Suppress Jooq's annoying tip of the day
-    ],
     args = [
         "-jdbcUrl",
         "jdbc:sqlite:$(DEVELOPMENT_DB_DIRECTORY)/$(DEVELOPMENT_DB_NAME)",
-
+    ],
+    data = [
+        "//resources:log4j.properties",
+    ],
+    jvm_flags = [
+        "-Dlog4j.configurationFile=resources/log4j.properties",
+        "-Dorg.jooq.no-logo=true",  # Suppress Jooq's annoying self promo
+        "-Dorg.jooq.no-tips=true",  # Suppress Jooq's annoying tip of the day
     ],
     main_class = "com.bablooka.idempotency.application.IdempotencyExample",
     visibility = ["//visibility:public"],
+    runtime_deps = [
+        "@maven-deps//:org_apache_logging_log4j_log4j_core",
+    ],
+    deps = [
+        "//:dagger",
+        "//:lombok",
+        "@maven-deps//:org_xerial_sqlite_jdbc",
+        "//src/main/java/com/bablooka/idempotency/core",
+        "@maven-deps//:commons_cli_commons_cli",
+        # TODO(weksler): Unneeded runtime dependency of jooq
+        "@maven-deps//:io_r2dbc_r2dbc_spi",
+        "@maven-deps//:org_apache_logging_log4j_log4j_api",
+        "@maven-deps//:org_jooq_jooq",
+        # TODO(weksler): Unneeded runtime dependency of jooq - remove it
+        "@maven-deps//:org_reactivestreams_reactive_streams",
+    ],
 )

@@ -1,20 +1,20 @@
 genrule(
     name = "flyway-migrate-for-codegen",
-    outs = ["idempotency_schema.db"],
     srcs = [
         "//resources/db/sql:flyway-migrations",
         "flyway.conf",
-        "@maven-flyway-core",
-        "@maven-flyway-commandline",
-        "@maven-sqlite-jdbc",
-        "@maven-gson",
+        "@maven-deps//:org_flywaydb_flyway_core",
+        "@maven-deps//:org_flywaydb_flyway_commandline",
+        "@maven-deps//:org_xerial_sqlite_jdbc",
+        "@maven-deps//:com_google_code_gson_gson",
     ],
+    outs = ["idempotency_schema.db"],
     cmd = """mkdir sql && cp resources/db/sql/* sql && \
 $(ABSOLUTE_JAVABASE)/bin/java -cp \
-$(location @maven-flyway-core):\
-$(location @maven-gson):\
-$(location @maven-flyway-commandline):\
-$(location @maven-sqlite-jdbc) \
+$(location @maven-deps//:org_flywaydb_flyway_core):\
+$(location @maven-deps//:com_google_code_gson_gson):\
+$(location @maven-deps//:org_flywaydb_flyway_commandline):\
+$(location @maven-deps//:org_xerial_sqlite_jdbc) \
 org.flywaydb.commandline.Main \
 -configFiles=$(location flyway.conf) \
 -url=jdbc:sqlite:$@ \
@@ -26,28 +26,28 @@ migrate""",
 
 genrule(
     name = "daos",
-    outs = ["idempotency-daos.srcjar"],
     srcs = [
-        "@maven-jooq",
-        "@maven-jooq-meta",
-        "@maven-jooq-codegen",
-        "@maven-reactive-streams",
-        "@maven-r2dbc-spi",
-        "@maven-sqlite-jdbc",
-        "@maven-jaxb-api",
-        "@maven-jakarta-bind",
+        "@maven-deps//:org_jooq_jooq",
+        "@maven-deps//:org_jooq_jooq_meta",
+        "@maven-deps//:org_jooq_jooq_codegen",
+        "@maven-deps//:org_reactivestreams_reactive_streams",
+        "@maven-deps//:io_r2dbc_r2dbc_spi",
+        "@maven-deps//:org_xerial_sqlite_jdbc",
+        "@maven-deps//:javax_xml_bind_jaxb_api",
+        "@maven-deps//:jakarta_xml_bind_jakarta_xml_bind_api",
         "idempotency_schema.db",
         "jooq_config.xml",
     ],
+    outs = ["idempotency-daos.srcjar"],
     cmd = """$(ABSOLUTE_JAVABASE)/bin/java -cp \
-$(location @maven-jaxb-api):\
-$(location @maven-jakarta-bind):\
-$(location @maven-jooq-codegen):\
-$(location @maven-jooq):\
-$(location @maven-jooq-meta):\
-$(location @maven-reactive-streams):\
-$(location @maven-r2dbc-spi):\
-$(location @maven-sqlite-jdbc) \
+$(location @maven-deps//:javax_xml_bind_jaxb_api):\
+$(location @maven-deps//:jakarta_xml_bind_jakarta_xml_bind_api):\
+$(location @maven-deps//:org_jooq_jooq_codegen):\
+$(location @maven-deps//:org_jooq_jooq):\
+$(location @maven-deps//:org_jooq_jooq_meta):\
+$(location @maven-deps//:org_reactivestreams_reactive_streams):\
+$(location @maven-deps//:io_r2dbc_r2dbc_spi):\
+$(location @maven-deps//:org_xerial_sqlite_jdbc) \
 -Djooq.codegen.jdbc.url=jdbc:sqlite:$(location idempotency_schema.db) \
 org.jooq.codegen.GenerationTool $(location jooq_config.xml) && \
 jar cvf $@ com

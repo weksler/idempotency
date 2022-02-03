@@ -2,16 +2,16 @@ load("@rules_java//java:defs.bzl", "java_test")
 
 java_test(
     name = "core",
-    srcs = glob(["*.java"]),
     size = "small",
+    srcs = glob(["*.java"]),
     test_class = "com.bablooka.idempotency.core.CoreTestSuite",
     deps = [
-        "//src/main/java/com/bablooka/idempotency/core:core",
-        "@junit4",
-        "//:mockito",
-        "//:mockito-inline",
-        "//:bytebuddy",
-        "//:bytebuddy-agent",
         "//:dagger",
+        "//src/main/java/com/bablooka/idempotency/core",
+        "@maven-deps//:junit_junit",
+        "@maven-deps//:net_bytebuddy_byte_buddy",
+        "@maven-deps//:net_bytebuddy_byte_buddy_agent",
+        "@maven-deps//:org_mockito_mockito_core",
+        "@maven-deps//:org_mockito_mockito_inline",
     ],
 )
