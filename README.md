@@ -9,6 +9,17 @@ A java library for idempotency
 3. run `./bazel test //...` to run all tests.
 4. Import into intellij using the bazel plugin.
 
+## Adding dependencies
+Dependencies are pinned in the `maven-deps_install.json` file, which is managed by a set of blaze commands.
+Don't edit the file directly!
+
+To add a dependency on a library hosted on maven, add it to the `maven-deps` target at the bottom of `WORKSPACE.bazel`, and then run the following command:
+```shell
+bazel run @unpinned_maven-deps//:pin
+```
+You should check in the updated `maven-deps_install.json` file.
+
+For more information on pinning dependencies, see [the documentation](https://github.com/bazelbuild/rules_jvm_external ).
 # Demo Application
 ## Database
 ### Writing migrations
