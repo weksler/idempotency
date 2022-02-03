@@ -87,6 +87,10 @@ maven_install(
     repositories = DAGGER_REPOSITORIES,
 )
 
+# After adding a new dependency, run
+#      bazel run @unpinned_maven-deps//:pin
+# See more details here -https://github.com/bazelbuild/rules_jvm_external
+# Alphabetize
 maven_install(
     name = "maven-deps",
     artifacts = [
@@ -113,8 +117,12 @@ maven_install(
         "org.xerial:sqlite-jdbc:3.34.0",
     ],
     fetch_sources = True,
+    maven_install_json = "@//:maven-deps_install.json",
     repositories = [
-        "https://maven.google.com",
         "https://repo1.maven.org/maven2",
     ],
 )
+
+load("@maven-deps//:defs.bzl", "pinned_maven_install")
+
+pinned_maven_install()
