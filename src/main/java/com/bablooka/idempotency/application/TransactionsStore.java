@@ -7,6 +7,7 @@ import com.bablooka.idempotency.dao.tables.records.TransactionsRecord;
 import javax.inject.Inject;
 import lombok.extern.log4j.Log4j2;
 import org.jooq.DSLContext;
+import org.jooq.impl.DSL;
 
 @Log4j2
 public class TransactionsStore {
@@ -29,13 +30,17 @@ public class TransactionsStore {
   }
 
   void insertPendingPayment(FakePaymentData fakePaymentData) {
-    TransactionsRecord transactionsRecord = dslContext.newRecord(TRANSACTIONS);
-    transactionsRecord.setAmountmicros(fakePaymentData.getAmountMicros());
-    transactionsRecord.setIsocurrencycode(fakePaymentData.getIsoCurrencyCode());
-    transactionsRecord.setDescription(fakePaymentData.getPaymentId());
-    transactionsRecord.setStatus(String.valueOf(PaymentStatus.PENDING));
-    log.info("About to store newly created record.");
-    transactionsRecord.store();
-    log.info("Stored record for payment {}, id {}", fakePaymentData, transactionsRecord.getId());
+    dslContext.transaction(
+        configuration -> {
+          TransactionsRecord transactionsRecord = DSL.using(configuration).newRecord(TRANSACTIONS);
+          transactionsRecord.setAmountmicros(fakePaymentData.getAmountMicros());
+          transactionsRecord.setIsocurrencycode(fakePaymentData.getIsoCurrencyCode());
+          transactionsRecord.setDescription(fakePaymentData.getPaymentId());
+          transactionsRecord.setStatus(String.valueOf(PaymentStatus.PENDING));
+          log.info("About to store newly created record.");
+          transactionsRecord.store();
+          log.info(
+              "Stored record for payment {}, id {}", fakePaymentData, transactionsRecord.getId());
+        });
   }
 }

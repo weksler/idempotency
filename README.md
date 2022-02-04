@@ -21,6 +21,11 @@ You should check in the updated `maven-deps_install.json` file.
 
 For more information on pinning dependencies, see [the documentation](https://github.com/bazelbuild/rules_jvm_external ).
 # Demo Application
+## Running
+To run the demo application, use the following command:
+```shell
+./bazel run //src/main/java/com/bablooka/idempotency/application:application
+```
 ## Database
 ### Writing migrations
 Migrations need to be put in the `resources/db/sql` directory,

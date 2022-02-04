@@ -26,7 +26,7 @@ java_binary(
         "@maven-deps//:org_xerial_sqlite_jdbc",
         "//src/main/java/com/bablooka/idempotency/core",
         "@maven-deps//:commons_cli_commons_cli",
-        # TODO(weksler): Unneeded runtime dependency of jooq
+        # TODO(weksler): Unneeded runtime dependency of jooq - remove it
         "@maven-deps//:io_r2dbc_r2dbc_spi",
         "@maven-deps//:org_apache_logging_log4j_log4j_api",
         "@maven-deps//:org_jooq_jooq",
