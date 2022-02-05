@@ -32,17 +32,12 @@ public class IdempotencyConnectionProvider implements ConnectionProvider {
     } catch (SQLException e) {
       throw new DataAccessException("Unable to get a connection to " + jdbcUrl, e);
     }
-    log.info("Acquired connection {}", connection);
+    log.debug("Acquired connection {}", connection);
     return connection;
   }
 
   @Override
   public synchronized void release(Connection connection) throws DataAccessException {
-    try {
-      log.info("Closing connection {}", connection);
-      connection.close();
-    } catch (SQLException e) {
-      throw new DataAccessException("Unable to close DB connection ", e);
-    }
+    log.debug("Connection {} released.", connection);
   }
 }

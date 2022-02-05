@@ -7,6 +7,7 @@ set -e -x
 # $4 - java binary
 # $5 - flyway.conf location
 
+pwd
 mkdir -p $2
 sqlite3 $2/$3 "VACUUM;"
 mkdir sql && cp resources/db/sql/* sql

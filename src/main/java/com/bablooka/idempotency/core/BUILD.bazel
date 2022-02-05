@@ -1,5 +1,6 @@
 load("@rules_java//java:defs.bzl", "java_library")
 
+# No-op change
 java_library(
     name = "core",
     srcs = [":sources"],

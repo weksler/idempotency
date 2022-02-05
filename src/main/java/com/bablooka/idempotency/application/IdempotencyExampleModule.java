@@ -8,6 +8,7 @@ import com.bablooka.idempotency.core.CoreModule;
 import com.bablooka.idempotency.core.IdempotencyStore;
 import com.bablooka.idempotency.core.IdempotentRpc.IdempotentRpcContext;
 import com.bablooka.idempotency.core.IdempotentRpcContextFactory;
+import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 import java.sql.Connection;
@@ -17,12 +18,14 @@ import javax.inject.Singleton;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
 
-@Module(includes = CoreModule.class)
+@Module(includes = {CoreModule.class, IdempotencyExampleModule.IdempotencyStoreModule.class})
 public class IdempotencyExampleModule {
 
-  @Provides
-  IdempotencyStore provideIdempotencyStore() {
-    return (idempotencyKey, idempotencyRecord) -> {};
+  @Module
+  public abstract static class IdempotencyStoreModule {
+    @Binds
+    abstract IdempotencyStore provideIdempotencyStore(
+        ExampleIdempotencyStore exampleIdempotencyStore);
   }
 
   @Provides

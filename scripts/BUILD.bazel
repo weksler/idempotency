@@ -1,19 +1,37 @@
+genrule(
+    name = "prep_for_migrated_db",
+    srcs = [
+        "@maven-deps//:com_google_code_gson_gson",
+        "@maven-deps//:org_flywaydb_flyway_commandline",
+        "@maven-deps//:org_flywaydb_flyway_core",
+        "@maven-deps//:org_xerial_sqlite_jdbc",
+    ],
+    outs = [
+        "gson.jar",
+        "flyway-commandline.jar",
+        "flyway-core.jar",
+        "sqlite-jdbc.jar",
+    ],
+    cmd = "cp $(SRCS) $(@D) && cd $(@D) && cp gson*.jar gson.jar && cp flyway-commandline* flyway-commandline.jar \
+    && cp flyway-core*.jar flyway-core.jar && cp sqlite-jdbc*.jar sqlite-jdbc.jar",
+)
+
 sh_binary(
     name = "migrate_db",
     srcs = ["migrate_db.sh"],
-    data = [
-        "//resources/db/sql:flyway-migrations",
-        "//resources/db:flyway.conf",
-        "@maven-deps//:org_flywaydb_flyway_core",
-        "@maven-deps//:org_flywaydb_flyway_commandline",
-        "@maven-deps//:org_xerial_sqlite_jdbc",
-        "@maven-deps//:com_google_code_gson_gson",
-    ],
     args = [
-        "$(location @maven-deps//:org_flywaydb_flyway_core):$(location @maven-deps//:com_google_code_gson_gson):$(location @maven-deps//:org_flywaydb_flyway_commandline):$(location @maven-deps//:org_xerial_sqlite_jdbc)",
+        "$(location gson.jar):$(location flyway-core.jar):$(location flyway-commandline.jar):$(location sqlite-jdbc.jar)",
         "$(DEVELOPMENT_DB_DIRECTORY)",
         "$(DEVELOPMENT_DB_NAME)",
         "$(ABSOLUTE_JAVABASE)/bin/java",
         "$(location //resources/db:flyway.conf)",
+    ],
+    data = [
+        "flyway-commandline.jar",
+        "flyway-core.jar",
+        "gson.jar",
+        "sqlite-jdbc.jar",
+        "//resources/db:flyway.conf",
+        "//resources/db/sql:flyway-migrations",
     ],
 )
