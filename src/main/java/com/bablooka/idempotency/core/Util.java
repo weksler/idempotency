@@ -1,5 +1,8 @@
 package com.bablooka.idempotency.core;
 
+import static com.google.common.base.Preconditions.checkState;
+
+import com.bablooka.idempotency.proto.IdempotencyRecord;
 import com.google.protobuf.Timestamp;
 import java.time.Clock;
 import java.time.Instant;
@@ -30,5 +33,25 @@ public class Util {
 
   Instant now() {
     return Instant.now(clock);
+  }
+
+  /**
+   * Updates the {@code updated} record with information from {@code from}, ensuring that the {@code
+   * idempotencyKey} field is not being changed, and returns the resulting proto.
+   */
+  public static IdempotencyRecord validateAndUpdateIdempotencyRecord(
+      IdempotencyRecord updated, IdempotencyRecord from) {
+    checkState(
+        updated.getIdempotencyKey().equals(from.getIdempotencyKey()),
+        "Can't change idempotency key while updating [%s] -> [%s]",
+        updated,
+        from);
+    return updated
+        .toBuilder()
+        .setStatus(from.getStatus())
+        .setLeaseExpiresAt(from.getLeaseExpiresAt())
+        .setRequestFingerprint(from.getRequestFingerprint())
+        .setRpcResponse(from.getRpcResponse())
+        .build();
   }
 }
