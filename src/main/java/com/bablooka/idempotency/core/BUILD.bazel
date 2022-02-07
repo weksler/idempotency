@@ -11,6 +11,7 @@ java_library(
         "//src/main/java/com/bablooka/idempotency/proto:idempotency_record_java_proto",
         "@com_google_protobuf//:protobuf_java",
         "@maven-deps//:com_google_guava_guava",
+        "@maven-deps//:com_google_protobuf_protobuf_java_util",
         "@maven-deps//:org_apache_logging_log4j_log4j_api",
     ],
 )

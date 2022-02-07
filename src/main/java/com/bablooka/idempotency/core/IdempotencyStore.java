@@ -1,6 +1,5 @@
 package com.bablooka.idempotency.core;
 
-import com.bablooka.idempotency.proto.IdempotencyRecord;
 import lombok.NonNull;
 
 /** A storage medium for idempotency records */
@@ -11,5 +10,5 @@ public interface IdempotencyStore {
    * otherwise.
    */
   void upsertIdempotencyRecord(
-      @NonNull String idempotencyKey, @NonNull IdempotencyRecord idempotencyRecord);
+      @NonNull String idempotencyKey, @NonNull byte[] serializedIdempotencyRecord);
 }

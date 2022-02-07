@@ -4,11 +4,13 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 import com.google.protobuf.Timestamp;
+import com.google.protobuf.util.JsonFormat;
 import dagger.Component;
 import dagger.Module;
 import dagger.Provides;
 import java.time.Clock;
 import java.time.Instant;
+import javax.inject.Singleton;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,8 +28,21 @@ public class UtilTest {
     Clock provideClock() {
       return clock;
     }
+
+    @Provides
+    @Singleton
+    JsonFormat.Printer getJsonFormatPrinter() {
+      return JsonFormat.printer().includingDefaultValueFields();
+    }
+
+    @Provides
+    @Singleton
+    JsonFormat.Parser getJsonFormatParser() {
+      return JsonFormat.parser();
+    }
   }
 
+  @Singleton
   @Component(modules = {UtilTestModule.class})
   public interface UtilTestRoot {
     Util util();

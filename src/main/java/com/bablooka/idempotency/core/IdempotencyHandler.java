@@ -8,6 +8,7 @@ import static com.google.common.base.Preconditions.checkState;
 import com.bablooka.idempotency.core.IdempotentRpc.IdempotentRpcContext;
 import com.bablooka.idempotency.proto.IdempotencyRecord;
 import com.google.protobuf.Timestamp;
+import com.google.protobuf.util.JsonFormat;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.Duration;
@@ -22,30 +23,33 @@ public class IdempotencyHandler<T extends Object> {
   private final IdempotentRpcContextFactory<T> idempotentRpcContextFactory;
   private final Util util;
   private final Duration leaseDuration;
+  private final JsonFormat.Printer jsonFormatPrinter;
 
   @Inject
   public IdempotencyHandler(
       @NonNull IdempotentRpcContextFactory<T> idempotentRpcContextFactory,
       @NonNull Util util,
-      @NonNull Duration leaseDuration) {
+      @NonNull Duration leaseDuration,
+      @NonNull JsonFormat.Printer jsonFormatPrinter) {
     this.idempotentRpcContextFactory = idempotentRpcContextFactory;
     this.util = util;
     this.leaseDuration = leaseDuration;
+    this.jsonFormatPrinter = jsonFormatPrinter;
   }
 
   public byte[] handleRpc(
       Connection connection,
       IdempotencyStore idempotencyStore,
       IdempotentRpc<T> idempotentRpc,
-      T processData) {
+      T processData)
+      throws IdempotencyException {
     try {
       checkState(
           connection.getAutoCommit() == false,
           "Connection %s must have auto commit off.",
           connection);
     } catch (SQLException e) {
-      // TODO(weksler): Exception handling :-)
-      log.error("Exception while checking auto commit state", e);
+      Util.logAndThrow(log, e, "Exception while checking auto commit state");
       return new byte[] {};
     }
 
@@ -68,14 +72,14 @@ public class IdempotencyHandler<T extends Object> {
             .setLeaseExpiresAt(timestamp)
             .build();
     idempotentRpcContext = idempotentRpc.prepare(idempotentRpcContext);
+    log.debug("Prepare {}: {}", idempotencyKey, util.protoToJsonString(idempotencyRecord));
     idempotencyStore.upsertIdempotencyRecord(
-        idempotentRpcContext.getIdempotencyKey(), idempotencyRecord);
+        idempotentRpcContext.getIdempotencyKey(), util.protoToDbFormat(idempotencyRecord));
 
     try {
       connection.commit();
     } catch (SQLException e) {
-      // TODO(weksler): Exception handling :-)
-      log.error("Exception while committing", e);
+      Util.logAndThrow(log, e, "Exception while committing");
       return new byte[] {};
     }
 
@@ -85,8 +89,9 @@ public class IdempotencyHandler<T extends Object> {
     // Process the response from the outbound RPC.
     idempotentRpcContext = idempotentRpc.processResults(idempotentRpcContext);
     idempotencyRecord = idempotencyRecord.toBuilder().setStatus(RESPONDED).build();
+    log.debug("Responded {}: {}", idempotencyKey, util.protoToJsonString(idempotencyRecord));
     idempotencyStore.upsertIdempotencyRecord(
-        idempotentRpcContext.getIdempotencyKey(), idempotencyRecord);
+        idempotentRpcContext.getIdempotencyKey(), util.protoToDbFormat(idempotencyRecord));
 
     return idempotentRpcContext.getResponse();
   }

@@ -1,5 +1,6 @@
 package com.bablooka.idempotency.core;
 
+import com.google.protobuf.util.JsonFormat;
 import dagger.Module;
 import dagger.Provides;
 import java.time.Clock;
@@ -7,6 +8,7 @@ import java.time.Duration;
 import java.util.UUID;
 import java.util.function.Supplier;
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 @Module
 public class CoreModule {
@@ -31,5 +33,17 @@ public class CoreModule {
     // TODO(weksler): Allow this to be configured
     // Default idempotency least duration is 1 minute.
     return Duration.ofMinutes(1);
+  }
+
+  @Provides
+  @Singleton
+  JsonFormat.Printer getJsonFormatPrinter() {
+    return JsonFormat.printer().includingDefaultValueFields();
+  }
+
+  @Provides
+  @Singleton
+  JsonFormat.Parser getJsonFormatParser() {
+    return JsonFormat.parser();
   }
 }

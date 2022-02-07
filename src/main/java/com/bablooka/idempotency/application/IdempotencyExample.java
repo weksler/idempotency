@@ -1,10 +1,10 @@
 package com.bablooka.idempotency.application;
 
 import com.bablooka.idempotency.application.FakePaymentProcessor.FakePaymentData;
+import com.bablooka.idempotency.core.IdempotencyException;
 import com.bablooka.idempotency.core.IdempotencyHandler;
 import com.bablooka.idempotency.core.IdempotencyStore;
 import java.sql.Connection;
-import java.sql.SQLException;
 import javax.inject.Inject;
 import lombok.Getter;
 import lombok.NonNull;
@@ -56,7 +56,7 @@ public class IdempotencyExample {
     this.transactionsStore = transactionsStore;
   }
 
-  public static void main(String args[]) throws SQLException, IdempotencyExampleException {
+  public static void main(String args[]) throws Exception {
     log.info("Starting up!");
     idempotencyExampleConfig = parseParams(args);
 
@@ -72,7 +72,7 @@ public class IdempotencyExample {
     log.info("Shutting down...");
   }
 
-  private void simulateIncomingPaymentRequest() throws SQLException {
+  private void simulateIncomingPaymentRequest() throws IdempotencyException {
     Connection connection = idempotencyConnectionProvider.acquire();
     FakePaymentData fakePaymentData =
         FakePaymentData.builder()
