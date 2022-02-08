@@ -50,7 +50,6 @@ public class IdempotencyHandler<T extends Object> {
           connection);
     } catch (SQLException e) {
       Util.logAndThrow(log, e, "Exception while checking auto commit state");
-      return new byte[] {};
     }
 
     // Prepare for the outbound RPC
@@ -80,7 +79,6 @@ public class IdempotencyHandler<T extends Object> {
       connection.commit();
     } catch (SQLException e) {
       Util.logAndThrow(log, e, "Exception while committing");
-      return new byte[] {};
     }
 
     // Execute the outbound RPC

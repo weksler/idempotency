@@ -9,6 +9,7 @@ java_test(
     deps = [
         "//:dagger",
         "//src/main/java/com/bablooka/idempotency/core",
+        "@maven-deps//:com_fasterxml_jackson_core_jackson_databind",
         "@maven-deps//:junit_junit",
         "@maven-deps//:net_bytebuddy_byte_buddy",
         "@maven-deps//:net_bytebuddy_byte_buddy_agent",

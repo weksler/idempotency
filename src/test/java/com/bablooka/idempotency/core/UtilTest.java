@@ -1,8 +1,15 @@
 package com.bablooka.idempotency.core;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.fail;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
+import com.bablooka.idempotency.proto.IdempotencyRecord;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.protobuf.ByteString;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Timestamp;
 import com.google.protobuf.util.JsonFormat;
 import dagger.Component;
@@ -11,6 +18,7 @@ import dagger.Provides;
 import java.time.Clock;
 import java.time.Instant;
 import javax.inject.Singleton;
+import lombok.SneakyThrows;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +40,7 @@ public class UtilTest {
     @Provides
     @Singleton
     JsonFormat.Printer getJsonFormatPrinter() {
-      return JsonFormat.printer().includingDefaultValueFields();
+      return jsonFormatPrinterSpy;
     }
 
     @Provides
@@ -49,10 +57,12 @@ public class UtilTest {
   }
 
   @Mock Clock clock;
+  JsonFormat.Printer jsonFormatPrinterSpy;
   Util util;
 
   @Before
   public void setUp() {
+    jsonFormatPrinterSpy = spy(JsonFormat.printer().includingDefaultValueFields());
     util =
         DaggerUtilTest_UtilTestRoot.builder().utilTestModule(new UtilTestModule()).build().util();
   }
@@ -69,5 +79,46 @@ public class UtilTest {
     Timestamp timestamp = util.timestampFromInstant(instant);
     assertEquals(1_569_918_324, timestamp.getSeconds());
     assertEquals(80_000_000, timestamp.getNanos());
+  }
+
+  @SneakyThrows
+  @Test
+  public void TestProtoToDbFormatHappyPath() throws Exception {
+    Instant instant = Instant.parse("2019-10-01T08:25:24.08Z");
+
+    IdempotencyRecord idempotencyRecord =
+        IdempotencyRecord.newBuilder()
+            .setIdempotencyKey("hello")
+            .setStatus(IdempotencyRecord.Status.EXECUTING)
+            .setRpcResponse(ByteString.copyFromUtf8("Hi There!!!"))
+            .setLeaseExpiresAt(util.timestampFromInstant(instant))
+            .build();
+
+    ObjectMapper objectMapper = new ObjectMapper();
+    JsonNode expected =
+        objectMapper.readTree(
+            "{\"idempotencyKey\": \"hello\",\"requestFingerprint\": \"\","
+                + "\"status\": \"EXECUTING\",\"rpcResponse\": \"SGkgVGhlcmUhISE=\","
+                + "\"leaseExpiresAt\":\"2019-10-01T08:25:24.080Z\"}");
+    assertEquals(expected, objectMapper.readTree(util.protoToDbFormat(idempotencyRecord)));
+  }
+
+  @Test
+  public void TestProtoToDbFormatInvalidProto() throws Exception {
+    doThrow(InvalidProtocolBufferException.class).when(jsonFormatPrinterSpy).print(any());
+
+    IdempotencyRecord idempotencyRecord =
+        IdempotencyRecord.newBuilder()
+            .setIdempotencyKey("hello")
+            .setStatus(IdempotencyRecord.Status.EXECUTING)
+            .setRpcResponse(ByteString.copyFromUtf8("Hi There!!!"))
+            .build();
+
+    try {
+      util.protoToDbFormat(idempotencyRecord);
+      fail("Should have thrown an IdempotencyException");
+    } catch (IdempotencyException e) {
+      // expected
+    }
   }
 }

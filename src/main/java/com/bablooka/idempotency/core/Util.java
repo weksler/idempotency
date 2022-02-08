@@ -1,8 +1,5 @@
 package com.bablooka.idempotency.core;
 
-import static com.google.common.base.Preconditions.checkState;
-
-import com.bablooka.idempotency.proto.IdempotencyRecord;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
 import com.google.protobuf.Timestamp;
@@ -46,67 +43,41 @@ public class Util {
     return Instant.now(clock);
   }
 
-  /**
-   * Updates the {@code updated} record with information from {@code from}, ensuring that the {@code
-   * idempotencyKey} field is not being changed, and returns the resulting proto.
-   */
-  public static IdempotencyRecord validateAndUpdateIdempotencyRecord(
-      IdempotencyRecord updated, IdempotencyRecord from) {
-    checkState(
-        updated.getIdempotencyKey().equals(from.getIdempotencyKey()),
-        "Can't change idempotency key while updating [%s] -> [%s]",
-        updated,
-        from);
-    return updated
-        .toBuilder()
-        .setStatus(from.getStatus())
-        .setLeaseExpiresAt(from.getLeaseExpiresAt())
-        .setRequestFingerprint(from.getRequestFingerprint())
-        .setRpcResponse(from.getRpcResponse())
-        .build();
-  }
-
-  byte[] protoToDbFormat(Message message) throws IdempotencyException {
+  byte[] protoToDbFormat(@NonNull Message message) throws IdempotencyException {
     try {
       return jsonFormatPrinter.print(message).getBytes();
     } catch (InvalidProtocolBufferException e) {
-      logAndThrow(log, e, "Unable to parse idempotency record {}", message);
+      logAndThrow(log, e, "Unable to parse idempotency record %s", message);
       return null;
     }
   }
 
-  String protoToJsonString(Message message) throws IdempotencyException {
+  String protoToJsonString(@NonNull Message message) throws IdempotencyException {
     try {
       return jsonFormatPrinter.print(message);
     } catch (InvalidProtocolBufferException e) {
-      logAndThrow(log, e, "Unable to parse proto {}", message);
+      logAndThrow(log, e, "Unable to parse proto %s", message);
       return null;
     }
   }
 
-  <T extends Message> T protoFromDbFormat(byte[] dbIdempotencyRecord, T builder)
+  <T extends Message> T protoFromDbFormat(@NonNull byte[] dbIdempotencyRecord, @NonNull T builder)
       throws IdempotencyException {
     try {
       T.Builder newBuilder = builder.newBuilderForType();
       jsonFormatParser.merge(new String(dbIdempotencyRecord), newBuilder);
       return (T) newBuilder.build();
     } catch (InvalidProtocolBufferException e) {
-      logAndThrow(log, e, "Unable to parse idempotency record {}", dbIdempotencyRecord);
+      logAndThrow(log, e, "Unable to parse idempotency record %s", dbIdempotencyRecord);
       return null;
     }
   }
 
-  private String protobufToString(Message message) throws IdempotencyException {
-    try {
-      return jsonFormatPrinter.print(message);
-    } catch (InvalidProtocolBufferException e) {
-      logAndThrow(log, e, "Unable to convert %s to json", message);
-      return "";
-    }
-  }
-
   static void logAndThrow(
-      Logger logger, Throwable t, String messageFormat, Object... optionalParams)
+      @NonNull Logger logger,
+      @NonNull Throwable t,
+      @NonNull String messageFormat,
+      Object... optionalParams)
       throws IdempotencyException {
     String errorMessage = String.format(messageFormat, optionalParams);
     logger.error(errorMessage, t);
