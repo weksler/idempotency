@@ -3,6 +3,7 @@ load("@rules_proto//proto:defs.bzl", "proto_library")
 proto_library(
     name = "idempotency_record_proto",
     srcs = ["idempotency_record.proto"],
+    visibility = ["//visibility:public"],
     deps = [
         "@com_google_protobuf//:timestamp_proto",
     ],
@@ -10,6 +11,6 @@ proto_library(
 
 java_proto_library(
     name = "idempotency_record_java_proto",
-    deps = [":idempotency_record_proto"],
     visibility = ["//visibility:public"],
+    deps = [":idempotency_record_proto"],
 )

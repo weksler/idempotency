@@ -32,5 +32,6 @@ java_binary(
         "@maven-deps//:org_jooq_jooq",
         # TODO(weksler): Unneeded runtime dependency of jooq - remove it!
         "@maven-deps//:org_reactivestreams_reactive_streams",
+        "@maven-deps//:com_google_protobuf_protobuf_java_util",
     ],
 )

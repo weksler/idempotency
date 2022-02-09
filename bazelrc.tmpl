@@ -1,8 +1,4 @@
 build --define=ABSOLUTE_JAVABASE=xxxxxx
-build --javabase=@bazel_tools//tools/jdk:absolute_javabase
-build --host_javabase=@bazel_tools//tools/jdk:absolute_javabase
-build --java_toolchain=@bazel_tools//tools/jdk:toolchain_vanilla
-build --host_java_toolchain=@bazel_tools//tools/jdk:toolchain_vanilla
 
 # location of development db - localize this to your system.
 build --define=DEVELOPMENT_DB_DIRECTORY=.

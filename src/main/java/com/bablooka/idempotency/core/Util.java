@@ -62,7 +62,8 @@ public class Util {
   }
 
   <T extends Message> T protoFromDbFormat(
-      @NonNull byte[] dbIdempotencyRecord, @NonNull T.Builder builder) throws IdempotencyException {
+      @NonNull byte[] dbIdempotencyRecord, @NonNull Message.Builder builder)
+      throws IdempotencyException {
     try {
       jsonFormatParser.merge(new String(dbIdempotencyRecord), builder);
       return (T) builder.build();
