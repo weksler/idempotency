@@ -15,6 +15,7 @@ public class CoreModule {
 
   public static final String IDEMPOTENCY_KEY = "idempotency_key";
 
+  @Singleton
   @Provides
   @Named(IDEMPOTENCY_KEY)
   Supplier<String> provideIdempotencyKeySupplier() {
@@ -22,12 +23,14 @@ public class CoreModule {
     return () -> UUID.randomUUID().toString();
   }
 
+  @Singleton
   @Provides
   Clock provideClock() {
     // This is the clock used by Java's default Instant implementation.
     return Clock.systemUTC();
   }
 
+  @Singleton
   @Provides
   Duration provideDefaultIdempotencyDureation() {
     // TODO(weksler): Allow this to be configured

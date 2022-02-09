@@ -23,11 +23,13 @@ public class IdempotencyExampleModule {
 
   @Module
   public abstract static class IdempotencyStoreModule {
+    @Singleton
     @Binds
     abstract IdempotencyStore provideIdempotencyStore(
         ExampleIdempotencyStore exampleIdempotencyStore);
   }
 
+  @Singleton
   @Provides
   IdempotentRpcContextFactory<FakePaymentData> provideIdempotencyRpcContextFactory(
       @Named(IDEMPOTENCY_KEY) Supplier<String> idempotencyKeySupplier) {

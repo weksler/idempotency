@@ -61,12 +61,11 @@ public class Util {
     }
   }
 
-  <T extends Message> T protoFromDbFormat(@NonNull byte[] dbIdempotencyRecord, @NonNull T builder)
-      throws IdempotencyException {
+  <T extends Message> T protoFromDbFormat(
+      @NonNull byte[] dbIdempotencyRecord, @NonNull T.Builder builder) throws IdempotencyException {
     try {
-      T.Builder newBuilder = builder.newBuilderForType();
-      jsonFormatParser.merge(new String(dbIdempotencyRecord), newBuilder);
-      return (T) newBuilder.build();
+      jsonFormatParser.merge(new String(dbIdempotencyRecord), builder);
+      return (T) builder.build();
     } catch (InvalidProtocolBufferException e) {
       logAndThrow(log, e, "Unable to parse idempotency record %s", dbIdempotencyRecord);
       return null;

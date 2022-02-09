@@ -7,7 +7,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-  IdempotencyTest.class,
   UtilTest.class,
+  IdempotencyHandlerTest.class,
 })
 public class CoreTestSuite {}

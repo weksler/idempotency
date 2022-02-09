@@ -1,5 +1,6 @@
 package com.bablooka.idempotency.core;
 
+import static com.bablooka.idempotency.proto.IdempotencyRecord.Status.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 import static org.mockito.ArgumentMatchers.any;
@@ -29,6 +30,10 @@ import org.mockito.junit.MockitoJUnitRunner;
 public class UtilTest {
 
   static final long TIMESTAMPS_SECONDS = 1642192717;
+  static final String DB_FORMAT_SAMPLE =
+      "{\"idempotencyKey\": \"hello\",\"requestFingerprint\": \"\","
+          + "\"status\": \"EXECUTING\",\"rpcResponse\": \"SGkgVGhlcmUhISE=\","
+          + "\"leaseExpiresAt\":\"2019-10-01T08:25:24.080Z\"}";
 
   @Module
   class UtilTestModule {
@@ -89,17 +94,13 @@ public class UtilTest {
     IdempotencyRecord idempotencyRecord =
         IdempotencyRecord.newBuilder()
             .setIdempotencyKey("hello")
-            .setStatus(IdempotencyRecord.Status.EXECUTING)
+            .setStatus(EXECUTING)
             .setRpcResponse(ByteString.copyFromUtf8("Hi There!!!"))
             .setLeaseExpiresAt(util.timestampFromInstant(instant))
             .build();
 
     ObjectMapper objectMapper = new ObjectMapper();
-    JsonNode expected =
-        objectMapper.readTree(
-            "{\"idempotencyKey\": \"hello\",\"requestFingerprint\": \"\","
-                + "\"status\": \"EXECUTING\",\"rpcResponse\": \"SGkgVGhlcmUhISE=\","
-                + "\"leaseExpiresAt\":\"2019-10-01T08:25:24.080Z\"}");
+    JsonNode expected = objectMapper.readTree(DB_FORMAT_SAMPLE);
     assertEquals(expected, objectMapper.readTree(util.protoToDbFormat(idempotencyRecord)));
   }
 
@@ -110,13 +111,33 @@ public class UtilTest {
     IdempotencyRecord idempotencyRecord =
         IdempotencyRecord.newBuilder()
             .setIdempotencyKey("hello")
-            .setStatus(IdempotencyRecord.Status.EXECUTING)
+            .setStatus(EXECUTING)
             .setRpcResponse(ByteString.copyFromUtf8("Hi There!!!"))
             .build();
 
     try {
       util.protoToDbFormat(idempotencyRecord);
       fail("Should have thrown an IdempotencyException");
+    } catch (IdempotencyException e) {
+      // expected
+    }
+  }
+
+  @Test
+  public void testProtoFromDbFormatHappyPath() throws Exception {
+    IdempotencyRecord idempotencyRecord =
+        util.protoFromDbFormat(DB_FORMAT_SAMPLE.getBytes(), IdempotencyRecord.newBuilder());
+    assertEquals("hello", idempotencyRecord.getIdempotencyKey());
+    assertEquals(EXECUTING, idempotencyRecord.getStatus());
+    assertEquals(1569918324, idempotencyRecord.getLeaseExpiresAt().getSeconds());
+    assertEquals(80000000, idempotencyRecord.getLeaseExpiresAt().getNanos());
+  }
+
+  @Test
+  public void testProtoFromDbFormatInvalidInput() {
+    try {
+      util.protoFromDbFormat("Bad input".getBytes(), IdempotencyRecord.newBuilder());
+      fail("should have thrown an IdempotencyException");
     } catch (IdempotencyException e) {
       // expected
     }
