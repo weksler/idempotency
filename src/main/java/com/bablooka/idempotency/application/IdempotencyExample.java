@@ -1,6 +1,7 @@
 package com.bablooka.idempotency.application;
 
 import com.bablooka.idempotency.application.FakePaymentProcessor.FakePaymentData;
+import com.bablooka.idempotency.core.CoreModule;
 import com.bablooka.idempotency.core.IdempotencyException;
 import com.bablooka.idempotency.core.IdempotencyHandler;
 import com.bablooka.idempotency.core.IdempotencyStore;
@@ -60,7 +61,11 @@ public class IdempotencyExample {
     log.info("Starting up!");
     idempotencyExampleConfig = parseParams(args);
 
-    IdempotencyExampleRoot idempotencyExampleRoot = DaggerIdempotencyExampleRoot.create();
+    IdempotencyExampleRoot idempotencyExampleRoot =
+        DaggerIdempotencyExampleRoot.builder()
+            .idempotencyExampleModule(new IdempotencyExampleModule())
+            .coreModule(new CoreModule())
+            .build();
     IdempotencyExample idempotencyExample = idempotencyExampleRoot.idempotencyExample();
 
     log.info("Verifying DB connection...");

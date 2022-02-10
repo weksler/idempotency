@@ -6,6 +6,7 @@ import static org.jooq.SQLDialect.SQLITE;
 import com.bablooka.idempotency.application.FakePaymentProcessor.FakePaymentData;
 import com.bablooka.idempotency.core.CoreModule;
 import com.bablooka.idempotency.core.IdempotencyStore;
+import com.bablooka.idempotency.core.IdempotencyTransactionProvider;
 import com.bablooka.idempotency.core.IdempotentRpc.IdempotentRpcContext;
 import com.bablooka.idempotency.core.IdempotentRpcContextFactory;
 import dagger.Binds;
@@ -20,14 +21,6 @@ import org.jooq.impl.DSL;
 
 @Module(includes = {CoreModule.class, IdempotencyExampleModule.IdempotencyStoreModule.class})
 public class IdempotencyExampleModule {
-
-  @Module
-  public abstract static class IdempotencyStoreModule {
-    @Singleton
-    @Binds
-    abstract IdempotencyStore provideIdempotencyStore(
-        ExampleIdempotencyStore exampleIdempotencyStore);
-  }
 
   @Singleton
   @Provides
@@ -55,7 +48,20 @@ public class IdempotencyExampleModule {
   }
 
   @Provides
-  DSLContext providesDslContext(IdempotencyConnectionProvider idempotencyConnectionProvider) {
-    return DSL.using(idempotencyConnectionProvider, SQLITE);
+  DSLContext providesDslContext(
+      IdempotencyConnectionProvider idempotencyConnectionProvider,
+      IdempotencyTransactionProvider idempotencyTransactionProvider) {
+    DSLContext dslContext = DSL.using(idempotencyConnectionProvider, SQLITE);
+    // TODO(weksler): This is just for testing. Do not commit!!!!!
+    dslContext.configuration().set(idempotencyConnectionProvider);
+    return dslContext;
+  }
+
+  @Module
+  public abstract static class IdempotencyStoreModule {
+    @Singleton
+    @Binds
+    abstract IdempotencyStore provideIdempotencyStore(
+        ExampleIdempotencyStore exampleIdempotencyStore);
   }
 }

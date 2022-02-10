@@ -16,6 +16,7 @@ java_library(
         "@maven-deps//:com_google_guava_guava",
         "@maven-deps//:com_google_protobuf_protobuf_java_util",
         "@maven-deps//:org_apache_logging_log4j_log4j_api",
+        "@maven-deps//:org_jooq_jooq",
     ],
 )
 
