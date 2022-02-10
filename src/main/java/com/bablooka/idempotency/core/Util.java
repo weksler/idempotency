@@ -28,22 +28,22 @@ public class Util {
     this.jsonFormatParser = jsonFormatParser;
   }
 
-  Timestamp timestampFromInstant(@NonNull Instant instant) {
+  public Timestamp timestampFromInstant(@NonNull Instant instant) {
     return Timestamp.newBuilder()
         .setSeconds(instant.getEpochSecond())
         .setNanos(instant.getNano())
         .build();
   }
 
-  Timestamp timestampOfCurrentTime() {
+  public Timestamp timestampOfCurrentTime() {
     return timestampFromInstant(now());
   }
 
-  Instant now() {
+  public Instant now() {
     return Instant.now(clock);
   }
 
-  byte[] protoToDbFormat(@NonNull Message message) throws IdempotencyException {
+  public byte[] protoToDbFormat(@NonNull Message message) throws IdempotencyException {
     try {
       return jsonFormatPrinter.print(message).getBytes();
     } catch (InvalidProtocolBufferException e) {
@@ -52,7 +52,7 @@ public class Util {
     }
   }
 
-  String protoToJsonString(@NonNull Message message) throws IdempotencyException {
+  public String protoToJsonString(@NonNull Message message) throws IdempotencyException {
     try {
       return jsonFormatPrinter.print(message);
     } catch (InvalidProtocolBufferException e) {
@@ -61,7 +61,7 @@ public class Util {
     }
   }
 
-  <T extends Message> T protoFromDbFormat(
+  public <T extends Message> T protoFromDbFormat(
       @NonNull byte[] dbIdempotencyRecord, @NonNull Message.Builder builder)
       throws IdempotencyException {
     try {
