@@ -5,7 +5,18 @@ java_test(
     name = "core",
     size = "small",
     srcs = glob(["*.java"]),
+    data = [
+        "//resources:log4j.properties",
+    ],
+    jvm_flags = [
+        "-Dlog4j.configurationFile=resources/log4j.properties",
+        "-Dorg.jooq.no-logo=true",  # Suppress Jooq's annoying self promo
+        "-Dorg.jooq.no-tips=true",  # Suppress Jooq's annoying tip of the day
+    ],
     test_class = "com.bablooka.idempotency.core.CoreTestSuite",
+    runtime_deps = [
+        "@maven-deps//:org_apache_logging_log4j_log4j_core",
+    ],
     deps = [
         "//:dagger",
         "//:lombok",
