@@ -53,7 +53,10 @@ public class IdempotencyExampleModule {
       IdempotencyTransactionProvider idempotencyTransactionProvider) {
     DSLContext dslContext = DSL.using(idempotencyConnectionProvider, SQLITE);
     // TODO(weksler): This is just for testing. Do not commit!!!!!
-    dslContext.configuration().set(idempotencyConnectionProvider);
+    dslContext
+        .configuration()
+        .set(idempotencyConnectionProvider)
+        .set(idempotencyTransactionProvider);
     return dslContext;
   }
 
