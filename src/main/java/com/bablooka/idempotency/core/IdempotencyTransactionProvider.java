@@ -58,7 +58,7 @@ public class IdempotencyTransactionProvider implements TransactionProvider {
               "Hey ho!!!", util.protoToDbFormat(IdempotencyRecord.newBuilder().build()));
     } catch (Throwable t) {
       log.error("Exception thrown during idempotency layer work. Rethrowing.");
-      ctx.data().remove(IDEMPOTENCY_TRANSACTION_PROVIDER_ACTIVE);
+      dslContextLazy.get().data().remove(IDEMPOTENCY_TRANSACTION_PROVIDER_ACTIVE);
       throw t;
     }
   }

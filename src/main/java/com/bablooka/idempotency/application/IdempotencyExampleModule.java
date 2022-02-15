@@ -47,12 +47,12 @@ public class IdempotencyExampleModule {
         IdempotencyExample.getIdempotencyExampleConfig().getJdbcUrl());
   }
 
+  @Singleton
   @Provides
   DSLContext providesDslContext(
       IdempotencyConnectionProvider idempotencyConnectionProvider,
       IdempotencyTransactionProvider idempotencyTransactionProvider) {
     DSLContext dslContext = DSL.using(idempotencyConnectionProvider, SQLITE);
-    // TODO(weksler): This is just for testing. Do not commit!!!!!
     dslContext
         .configuration()
         .set(idempotencyConnectionProvider)
