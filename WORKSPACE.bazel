@@ -2,7 +2,6 @@ workspace(name = "idempotency")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-# rules_java defines rules for generating Java code from Protocol Buffers.
 http_archive(
     name = "rules_java",
     sha256 = "34b41ec683e67253043ab1a3d1e8b7c61e4e8edefbcad485381328c934d072fe",
