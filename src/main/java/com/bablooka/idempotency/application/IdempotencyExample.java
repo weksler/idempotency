@@ -5,18 +5,12 @@ import com.bablooka.idempotency.core.CoreModule;
 import com.bablooka.idempotency.core.IdempotencyException;
 import com.bablooka.idempotency.core.IdempotencyHandler;
 import com.bablooka.idempotency.core.IdempotencyStore;
-import java.sql.Connection;
 import javax.inject.Inject;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.log4j.Log4j2;
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Option;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
+import org.apache.commons.cli.*;
+import org.jooq.DSLContext;
 
 /**
  * An example use of the idempotency framework. This code exists primarily to provide the
@@ -38,23 +32,23 @@ public class IdempotencyExample {
   @Getter private static IdempotencyExampleConfig idempotencyExampleConfig;
 
   private final IdempotencyHandler<FakePaymentData> idempotencyHandler;
-  private final IdempotencyConnectionProvider idempotencyConnectionProvider;
   private final IdempotencyStore idempotencyStore;
   private final FakePaymentProcessor fakePaymentProcessor;
   private final TransactionsStore transactionsStore;
+  private final DSLContext dslContext;
 
   @Inject
   IdempotencyExample(
       @NonNull IdempotencyHandler<FakePaymentData> idempotencyHandler,
-      @NonNull IdempotencyConnectionProvider idempotencyConnectionProvider,
       @NonNull IdempotencyStore idempotencyStore,
       @NonNull FakePaymentProcessor fakePaymentProcessor,
-      @NonNull TransactionsStore transactionsStore) {
+      @NonNull TransactionsStore transactionsStore,
+      @NonNull DSLContext dslContext) {
     this.idempotencyHandler = idempotencyHandler;
-    this.idempotencyConnectionProvider = idempotencyConnectionProvider;
     this.idempotencyStore = idempotencyStore;
     this.fakePaymentProcessor = fakePaymentProcessor;
     this.transactionsStore = transactionsStore;
+    this.dslContext = dslContext;
   }
 
   public static void main(String args[]) throws Exception {
@@ -78,7 +72,6 @@ public class IdempotencyExample {
   }
 
   private void simulateIncomingPaymentRequest() throws IdempotencyException {
-    Connection connection = idempotencyConnectionProvider.acquire();
     FakePaymentData fakePaymentData =
         FakePaymentData.builder()
             .amountMicros(23_000_000)
@@ -86,8 +79,7 @@ public class IdempotencyExample {
             .isoCurrencyCode("USD")
             .build();
     idempotencyHandler.handleRpc(
-        connection, idempotencyStore, fakePaymentProcessor, fakePaymentData);
-    idempotencyConnectionProvider.release(connection);
+        dslContext, idempotencyStore, fakePaymentProcessor, fakePaymentData);
   }
 
   private void prepareDb() {

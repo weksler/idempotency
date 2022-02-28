@@ -9,13 +9,13 @@ import com.bablooka.idempotency.core.IdempotentRpc.IdempotentRpcContext;
 import com.bablooka.idempotency.proto.IdempotencyRecord;
 import com.google.protobuf.Timestamp;
 import com.google.protobuf.util.JsonFormat;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.Duration;
 import java.time.Instant;
 import javax.inject.Inject;
 import lombok.NonNull;
 import lombok.extern.log4j.Log4j2;
+import org.jooq.DSLContext;
 
 @Log4j2
 public class IdempotencyHandler<T extends Object> {
@@ -38,23 +38,25 @@ public class IdempotencyHandler<T extends Object> {
   }
 
   public byte[] handleRpc(
-      Connection connection,
+      DSLContext dslContext,
       IdempotencyStore idempotencyStore,
       IdempotentRpc<T> idempotentRpc,
       T processData)
       throws IdempotencyException {
-    try {
-      checkState(
-          connection.getAutoCommit() == false,
-          "Connection %s must have auto commit off.",
-          connection);
-    } catch (SQLException e) {
-      Util.logAndThrow(log, e, "Exception while checking auto commit state");
-    }
+    dslContext.connection(
+        c -> {
+          try {
+            checkState(
+                c.getAutoCommit() == false, "Connection %s must have auto commit off.", dslContext);
+          } catch (SQLException e) {
+            Util.logAndThrow(log, e, "Exception while checking auto commit state");
+          }
+        });
 
     // Prepare for the outbound RPC
     IdempotentRpcContext idempotentRpcContext =
         idempotentRpcContextFactory.getIdempotencyRpcContext(processData);
+    checkNotNull(idempotentRpcContext, "IdempotencyRpcContext can not be null.");
     String idempotencyKey = idempotentRpcContext.getIdempotencyKey();
     checkNotNull(idempotencyKey, "Idempotency key can not be null.");
     Instant leaseExpiresAt = util.now().plus(leaseDuration);
@@ -75,11 +77,14 @@ public class IdempotencyHandler<T extends Object> {
     idempotencyStore.upsertIdempotencyRecord(
         idempotentRpcContext.getIdempotencyKey(), util.protoToDbFormat(idempotencyRecord));
 
-    try {
-      connection.commit();
-    } catch (SQLException e) {
-      Util.logAndThrow(log, e, "Exception while committing");
-    }
+    dslContext.connection(
+        c -> {
+          try {
+            c.commit();
+          } catch (SQLException e) {
+            Util.logAndThrow(log, e, "Exception while committing");
+          }
+        });
 
     // Execute the outbound RPC
     idempotentRpcContext = idempotentRpc.execute(idempotentRpcContext);

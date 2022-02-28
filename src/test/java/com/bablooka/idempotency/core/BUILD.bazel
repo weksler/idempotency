@@ -30,6 +30,7 @@ java_test(
         "@maven-deps//:junit_junit",
         "@maven-deps//:net_bytebuddy_byte_buddy",
         "@maven-deps//:net_bytebuddy_byte_buddy_agent",
+        "@maven-deps//:org_jooq_jooq",
         "@maven-deps//:org_mockito_mockito_core",
         "@maven-deps//:org_mockito_mockito_inline",
     ],
