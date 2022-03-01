@@ -4,8 +4,9 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "rules_java",
-    sha256 = "34b41ec683e67253043ab1a3d1e8b7c61e4e8edefbcad485381328c934d072fe",
-    url = "https://github.com/bazelbuild/rules_java/releases/download/4.0.0/rules_java-4.0.0.tar.gz",
+    sha256 = "bf21724043eb21b19aa9b2253f8fb7d25c66896bc63037319d1d6cc2100d71f1",
+    strip_prefix = "rules_java-5.0.0",
+    url = "https://github.com/bazelbuild/rules_java/archive/refs/tags/5.0.0.zip",
 )
 
 load("@bazel_tools//tools/build_defs/repo:jvm.bzl", "jvm_maven_import_external")
