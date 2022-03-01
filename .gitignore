@@ -363,3 +363,6 @@ deploy/deploy
 
 # Bazelrc is generated
 .bazelrc
+
+# Don't check in coverage reports
+genhtml/**
